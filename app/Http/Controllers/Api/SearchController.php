@@ -9,17 +9,6 @@ use App\Models\Timeslot;
 
 class SearchController extends Controller
 {
-    public function index()
-    {
-        $availableDoctors = User::where('role_id', 2) // Consider replacing 2 with a constant or config value
-            ->whereHas('timeslots')
-            ->with('timeslots') // Eager load timeslots if they're used in the view
-            ->paginate(6); // Use pagination to manage large datasets
-
-        // Assuming this is for an API, return a JSON response
-        return response()->json($availableDoctors);
-    }
-
     public function search(Request $request)
     {
         $search = $request->get('search');
