@@ -55,6 +55,7 @@
                         <button type="button" id="navbar-fullscreen" class="nav-link"><i
                                 class="ik ik-maximize"></i></button>
                     </div>
+
                     <div class="top-menu d-flex align-items-center">
                         <div class="dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="notiDropdown" role="button"

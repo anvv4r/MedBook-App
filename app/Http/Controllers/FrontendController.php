@@ -13,6 +13,15 @@ class FrontendController extends Controller
     /**
      * Display a listing of the resource.
      */
+    // public function index()
+    // {
+    //     $doctors = User::where('role_id', 2)
+    //         ->whereHas('timeslots')
+    //         ->get();
+
+    //     return view('index', compact('doctors'));
+    // }
+
     public function search(Request $request)
     {
         $search = $request->get('search');

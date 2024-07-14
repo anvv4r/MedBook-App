@@ -39,7 +39,7 @@
                     <a href="/login">
                         <h3>Login</h3>
                     </a>
-                    <a href="/register-doctor">
+                    <a href="/register">
                         <h3>Register as Patient</h3>
                     </a>
                     <a href="/register-doctor">

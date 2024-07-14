@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\Specialty;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -15,16 +16,18 @@ class DocRegController extends Controller
      */
     public function index()
     {
-        //
+        $specialties = Specialty::all(); // Assuming you have a Specialty model
+        return view('auth.register-doctor', compact('specialties'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function registerDoctor()
-    {
-        return view('auth.register-doctor');
-    }
+    // public function registerDoctor()
+    // {
+    //     $specialties = Specialty::all(); // Assuming you have a Specialty model
+    //     return view('auth.register-doctor', compact('specialties'));
+    // }
 
     /**
      * Store a newly created resource in storage.
