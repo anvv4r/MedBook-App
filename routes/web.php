@@ -6,9 +6,9 @@ use Illuminate\Support\Facades\Route;
 //     return view('dashboard');
 // });
 
-Route::get('/', [App\Http\Controllers\FrontendController::class, 'index'])->name('index');
-Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'dashboard'])->name('dashboard');
 
+Route::get('/', [App\Http\Controllers\FrontendController::class, 'search'])->name('search');
+Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'dashboard'])->name('dashboard');
 
 Route::get('/doctor/{id}', [App\Http\Controllers\FrontendController::class, 'show'])->name('home.doctor');
 Route::get('/register-doctor', [App\Http\Controllers\DocRegController::class, 'registerDoctor'])->name('auth.register-doctor');
