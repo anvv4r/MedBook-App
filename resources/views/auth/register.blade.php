@@ -5,6 +5,17 @@
 <div class="container">
     <h3>Register as Patient</h3>
     <div class="form-body">
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <form method="POST" action="{{ route('register') }}">
             @csrf
             <div class="form-row">
