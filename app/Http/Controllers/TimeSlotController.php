@@ -16,7 +16,6 @@ class TimeSlotController extends Controller
      */
     public function index()
     {
-
         $loggedInUserId = Auth::id();
 
         $users = User::all();

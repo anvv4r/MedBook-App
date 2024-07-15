@@ -10,7 +10,7 @@ Route::get('/', [App\Http\Controllers\FrontendController::class, 'search'])->nam
 
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'dashboard'])->name('dashboard');
 
-Route::get('/doctor/{id}', [App\Http\Controllers\FrontendController::class, 'show'])->name('home.doctor');
+Route::get('/doctor/{id}', [App\Http\Controllers\FrontendController::class, 'show'])->whereNumber('id')->name('home.doctor');
 Route::get('/register-doctor', [App\Http\Controllers\DocRegController::class, 'index'])->name('index');
 Route::post('/register-doctor', [App\Http\Controllers\DocRegController::class, 'storeDoctor'])->name('auth.register-doctor');
 
