@@ -35,7 +35,7 @@ body {
         align-items: center;
         flex-wrap: wrap;
         width: 30%;
-        gap: 1em;
+        // gap: 0.5em;
 
         h2 {
             font-size: 1.5em;
@@ -117,45 +117,6 @@ body {
         font-size: 1.5em;
         color: #333;
         text-align: left;
-    }
-
-    .search_bar {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 0.5em;
-        width: 100%;
-
-        form {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 0.5em;
-            width: 100%;
-        }
-
-        input {
-            margin-top: 1em;
-            padding: 1em;
-            width: 70%;
-            border: 1px solid #cdcdcd;
-            border-radius: 5px;
-            font-size: 1em;
-        }
-
-        button {
-            margin-top: 1em;
-            padding: 1em 2em 1em 2em;
-            border: 1px solid #004ea1;
-            border-radius: 5px;
-            font-size: 1em;
-            width: 25%;
-            text-align: center;
-            background-color: #004ea1;
-            color: #fff;
-        }
     }
 
     .search_result {
@@ -273,12 +234,162 @@ body {
 
 }
 
+.search_bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    width: 100%;
+}
+
+.home-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1em;
+    width: 100%;
+}
+
+.home-input {
+    margin-top: 1em;
+    padding: 1em;
+    width: 60%;
+    border: 1px solid #aed9ff;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.home-button {
+    margin-top: 1em;
+    padding: 1em 2em;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    width: 30%;
+    text-align: center;
+    background-color: #004ea1;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+    margin-top: 2em;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1em;
+    width: 100%;
+}
+
+.form-input {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1em;
+    width: 100%;
+}
+
+.form-row {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1em;
+    width: 100%;
+}
+
+.form-col {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1em;
+    width: 100%;
+}
+
+
+input {
+    margin-top: 1em;
+    padding: 1em;
+    width: 90%;
+    border: 1px solid #aed9ff;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+select {
+    margin-top: 1em;
+    padding: 1em;
+    width: 100%;
+    border: 1px solid #aed9ff;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+textarea {
+    margin-top: 1em;
+    padding: 1em;
+    width: 95%;
+    border: 1px solid #aed9ff;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+button {
+    margin-top: 1em;
+    padding: 1em 2em;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    width: auto;
+    text-align: center;
+    background-color: #004ea1;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #003780;
+}
+
+/* Additional styling for labels for better readability */
+label {
+    width: 100%;
+    text-align: left;
+    margin-top: 1em;
+    font-size: 1em;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Styling for error messages */
+.invalid-feedback {
+    color: #ff0000;
+    font-size: 0.9em;
+    margin-top: 0.5em;
+    width: 70%;
+    text-align: left;
+}
+
 .mid {
     margin-top: 2em;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #4a4b4c;
+    background-color: #666666;
     height: 80px;
     width: 70%;
     gap: 3em;
@@ -310,7 +421,7 @@ body {
         width: 25%;
         text-align: center;
         color: #fff;
-        background-color: #4a4b4c;
+        background-color: #666666;
     }
 }
 
@@ -419,7 +530,7 @@ footer {
     }
 
     .footer_copyright {
-        border-top: #cdcdcd 2px solid;
+        border-top: #aed9ff 1.5px solid;
         margin-top: 1em;
         display: flex;
         justify-content: flex-end;

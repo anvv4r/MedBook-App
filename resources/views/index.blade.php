@@ -4,9 +4,9 @@
 <section class="main">
     <div class="container">
         <div class="search_bar">
-            <form action="{{ route('search') }}" method="GET">
-                <input type="search" name="search" id="search" />
-                <button type="submit">Search</button>
+            <form class="home-form" action="{{ route('search') }}" method="GET">
+                <input class="home-input" type="search" name="search" id="search" />
+                <button class="home-button" type="submit">Search</button>
             </form>
         </div>
         <div class="search_result">

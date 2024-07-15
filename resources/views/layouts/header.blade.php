@@ -8,8 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'MedBook') }}</title>
-    <link rel="stylesheet" href="{{ asset('scss/home.scss') }}">
-
+    <link rel="stylesheet" href="{{ asset('scss/style.scss') }}">
 
 </head>
 
