@@ -217,15 +217,6 @@ body {
             margin-top: 2em;
         }
 
-        .book_button {
-            padding: 0.5em 1em 0.5em 1em;
-            border-radius: 5px;
-            font-size: 1em;
-            text-align: center;
-            color: #fff;
-            background-color: #004ea1;
-        }
-
         a {
             text-decoration: none;
         }
@@ -233,6 +224,32 @@ body {
     }
 
 }
+
+.booking_detail {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1em;
+    width: 100%;
+
+    h3 {
+        font-size: 1.5em;
+        color: #333;
+        margin-top: 0;
+    }
+
+    p {
+        font-size: 1em;
+        color: #333;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+}
+
 
 .search_bar {
     display: flex;
@@ -373,6 +390,16 @@ button {
 button:hover {
     background-color: #003780;
 }
+
+.book_button {
+    padding: 0.5em 1em 0.5em 1em;
+    border-radius: 5px;
+    font-size: 1em;
+    text-align: center;
+    color: #fff;
+    background-color: #004ea1;
+}
+
 
 /* Additional styling for labels for better readability */
 label {

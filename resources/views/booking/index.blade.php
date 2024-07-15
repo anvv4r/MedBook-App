@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h3>Make Appointment for : {{ $user->name }}</h3>
-    <div class="container_detail">
+    <div class="booking_detail">
         <div>
             <p>Appointment Date : {{ $appointment->date }}</p>
             <p>Doctor name: {{ $doctorName }}</p>

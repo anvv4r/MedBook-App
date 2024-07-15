@@ -20,7 +20,6 @@ class DoctorController extends Controller
         return view('dashboard.admin.doctor.index', compact('users'));
     }
 
-
     /**
      * Show the form for creating a new resource.
      */
@@ -29,13 +28,13 @@ class DoctorController extends Controller
 
         $users = Auth::user();
 
-        // $role = Role::where('name', 'admin')->first();
-        // // dd($role); // Check if $role is not null (i.e., role exists in the database
-        // if (!$role) {
-        //     // Handle the error, e.g., return an error message or redirect.
-        //     return redirect()->back()->withErrors('Admin role not found.');
-        // }
-        // $users = User::where('role_id', $role->id)->get();
+        $role = Role::where('name', 'admin')->first();
+        // dd($role); // Check if $role is not null (i.e., role exists in the database
+        if (!$role) {
+            // Handle the error, e.g., return an error message or redirect.
+            return redirect()->back()->withErrors('Admin role not found.');
+        }
+        $users = User::where('role_id', $role->id)->get();
 
         return view('dashboard.admin.doctor.create', compact('users'));
     }

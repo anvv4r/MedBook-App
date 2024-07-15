@@ -14,10 +14,6 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        // $users = User::join('roles', 'users.role_id', '=', 'roles.id')
-        //     ->whereIn('roles.name', ['admin', 'doctor', 'patient'])
-        //     ->get(['users.*']); // Select only columns from the users table
-
         // Get the logged-in user's ID
         $loggedInUserId = Auth::id();
 
@@ -45,6 +41,5 @@ class DashboardController extends Controller
 
         return view('dashboard', compact('users', 'loggedInUserId'));
     }
-
 
 }
