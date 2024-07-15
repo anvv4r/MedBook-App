@@ -18,7 +18,7 @@ class PatientController extends Controller
         // filter bookings by date
         if ($request->date) {
             $bookings = Booking::latest()->where('date', $request->date)->paginate(20);
-            return view('dashboard.doctor.patient.boking-list', compact('bookings'));
+            return view('dashboard.doctor.patient.booking-list', compact('bookings'));
         }
 
         $doctorId = auth()->id(); // Get the logged-in doctor's ID

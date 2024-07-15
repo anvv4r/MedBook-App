@@ -21,15 +21,6 @@ class DocRegController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    // public function registerDoctor()
-    // {
-    //     $specialties = Specialty::all(); // Assuming you have a Specialty model
-    //     return view('auth.register-doctor', compact('specialties'));
-    // }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function storeDoctor(Request $request)

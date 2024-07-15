@@ -316,6 +316,15 @@ form {
     align-items: flex-start;
     flex-direction: column;
     gap: 1em;
+    width: 50%;
+}
+
+.form-textarea {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1em;
     width: 100%;
 }
 

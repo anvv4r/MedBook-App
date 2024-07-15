@@ -4,14 +4,12 @@
 
 <div class="container">
     <h3>Register as Practicioner</h3>
-
     <div class="form-body">
-
         <form action="{{route('auth.register-doctor')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-row">
                 <div class="form-input">
-                    <label for="">Full name</label>
+                    <label>Full name</label>
                     <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
                         placeholder="doctor name" value="{{old('name')}}">
                     @error('name')
@@ -21,7 +19,7 @@
                     @enderror
                 </div>
                 <div class="form-input">
-                    <label for="">Email</label>
+                    <label>Email</label>
                     <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
                         placeholder="email" value="{{old('email')}}">
                     @error('email')
@@ -31,10 +29,9 @@
                     @enderror
                 </div>
             </div>
-
             <div class="form-row">
                 <div class="form-input">
-                    <label for="">Password</label>
+                    <label>Password</label>
                     <input type="password" name="password" class="form-control @error('password') is-invalid @enderror"
                         placeholder="doctor password">
                     @error('password')
@@ -44,7 +41,7 @@
                     @enderror
                 </div>
                 <div class="form-input">
-                    <label for="">Gender</label>
+                    <label>Gender</label>
                     <select class="form-control @error('gender') is-invalid @enderror" name="gender">
                         <option value="">select</option>
                         <option value="Male">Male</option>
@@ -57,12 +54,9 @@
                     @enderror
                 </div>
             </div>
-
-
             <div class="form-row">
-
                 <div class="form-input">
-                    <label for="">Education</label>
+                    <label>Education</label>
                     <input type="text" name="education" class="form-control @error('education') is-invalid @enderror"
                         placeholder="doctor highest degree" value="{{old('education')}}">
                     @error('education')
@@ -72,7 +66,7 @@
                     @enderror
                 </div>
                 <div class="form-input">
-                    <label for="">Address</label>
+                    <label>Address</label>
                     <input type="text" name="address" class="form-control @error('address') is-invalid @enderror"
                         placeholder="doctor address" value="{{old('address')}}">
                     @error('address')
@@ -83,9 +77,8 @@
                 </div>
             </div>
             <div class="form-row">
-
                 <div class="form-input">
-                    <label for="">Specialization</label>
+                    <label>Specialization</label>
                     <select name="specialty" class="form-control">
                         <option value="">Please select</option>
 
@@ -93,17 +86,14 @@
                             <option value="{{$d->name}}">{{$d->name}}</option>
                         @endforeach
                     </select>
-
                     @error('specialty')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-
                 </div>
-
                 <div class="form-input">
-                    <label for="">Phone number</label>
+                    <label>Phone number</label>
                     <input type="text" name="phone_number" placeholder="doctor phone number"
                         class="form-control @error('phone_number') is-invalid @enderror"
                         value="{{old('phone_number')}}">
@@ -112,15 +102,11 @@
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-
                 </div>
-
             </div>
-
             <div class="form-row">
-
                 <div class="form-input">
-                    <label for="">Date of Birth</label>
+                    <label>Date of Birth</label>
                     <input type="date" name="dob" class="form-control @error('dob') is-invalid @enderror"
                         value="{{old('dob')}}">
                     @error('dob')
@@ -128,9 +114,7 @@
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-
                 </div>
-
                 <div class="form-input">
                     <label>Image</label>
                     <input type="file" class="form-control file-upload-info @error('image') is-invalid @enderror"
@@ -142,10 +126,8 @@
                         </span>
                     @enderror
                 </div>
-
             </div>
-
-            <div class="form-col">
+            <div class="form-textarea">
                 <label>Bio</label>
                 <textarea class="form-control @error('description') is-invalid @enderror" id="exampleTextarea1" rows="4"
                     name="description">{{old('description')}}</textarea>
@@ -155,10 +137,9 @@
                     </span>
                 @enderror
             </div>
-            <button type="submit" class="btn btn-primary mr-2">Submit</button>
+            <button type="submit">Submit</button>
         </form>
-
     </div>
-
 </div>
+
 @endsection
