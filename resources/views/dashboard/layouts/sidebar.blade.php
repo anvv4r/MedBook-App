@@ -26,6 +26,13 @@
                             @endif
                         </a>
                     </div>
+                    <div class="nav-item has-sub">
+                        <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>User Profile</span> <span
+                                class="badge badge-danger"></span></a>
+                        <div class="submenu-content">
+                            <a href="{{route('profile.index')}}" class="menu-item">View</a>
+                        </div>
+                    </div>
 
                     @if(auth()->check() && auth()->user()->role?->name === 'admin')
                         <div class="nav-item has-sub">
@@ -77,13 +84,6 @@
                     @endif
 
                     @if(auth()->check() && auth()->user()->role?->name === 'patient')
-                        <div class="nav-item has-sub">
-                            <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>User Profile</span> <span
-                                    class="badge badge-danger"></span></a>
-                            <div class="submenu-content">
-                                <a href="{{route('profile.index')}}" class="menu-item">View</a>
-                            </div>
-                        </div>
                         <div class="nav-item has-sub">
                             <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>My Booking</span> <span
                                     class="badge badge-danger"></span></a>

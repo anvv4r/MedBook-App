@@ -14,14 +14,11 @@ Route::get('/doctor/{id}', [App\Http\Controllers\FrontendController::class, 'sho
 Route::get('/register-doctor', [App\Http\Controllers\DocRegController::class, 'index'])->name('index');
 Route::post('/register-doctor', [App\Http\Controllers\DocRegController::class, 'storeDoctor'])->name('auth.register-doctor');
 
-Route::get('/booking/{id}/{date}', [App\Http\Controllers\BookingController::class, 'index'])->name('booking.index');
-Route::get('/dashboard/my-booking', [App\Http\Controllers\BookingController::class, 'myBookings'])->name('my-booking');
-Route::post('/booking/confirm', [App\Http\Controllers\BookingController::class, 'confirm'])->name('booking.confirm');
-Route::post('/booking/store', [App\Http\Controllers\BookingController::class, 'store'])->name('booking.store');
-
+// route for all login user
 Route::get('/dashboard/user-profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile.index');
 Route::post('/dashboard/user-profile', [App\Http\Controllers\ProfileController::class, 'store'])->name('profile.store');
 Route::post('/dashboard/profile-pic', [App\Http\Controllers\ProfileController::class, 'profilePic'])->name('profile.pic');
+
 
 //admin routes
 Route::get('/admin/doctor', [App\Http\Controllers\DoctorController::class, 'index'])->name('doctor.index');
@@ -32,7 +29,6 @@ Route::put('/admin/doctor/update/{id}', [App\Http\Controllers\DoctorController::
 Route::delete('/admin/doctor/delete/{id}', [App\Http\Controllers\DoctorController::class, 'destroy'])->name('doctor.destroy');
 Route::get('/admin/doctor/delete/{id}', [App\Http\Controllers\DoctorController::class, 'delete'])->name('doctor.delete');
 Route::get('/admin/doctor/show/{id}', [App\Http\Controllers\DoctorController::class, 'show'])->name('doctor.show');
-Route::get('/admin/doctor-create', [App\Http\Controllers\DocController::class, 'test'])->name('test');
 
 
 Route::get('/admin/specialty', [App\Http\Controllers\SpecialtyController::class, 'index'])->name('specialty.index');
@@ -52,7 +48,6 @@ Route::put('/admin/patient/update/{id}', [App\Http\Controllers\PatientController
 
 
 // doctor routes
-// Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
 Route::get('/doctor/time', [App\Http\Controllers\TimeSlotController::class, 'index'])->name('time.index');
 Route::get('/doctor/time/create', [App\Http\Controllers\TimeSlotController::class, 'create'])->name('time.create');
 Route::post('/doctor/time/store', [App\Http\Controllers\TimeSlotController::class, 'store'])->name('time.store');
@@ -62,3 +57,9 @@ Route::post('/doctor/time/update/{date}', [App\Http\Controllers\TimeSlotControll
 Route::get('/doctor/patient', [App\Http\Controllers\PatientController::class, 'bookingList'])->name('patient.booking-list');
 Route::post('/doctor/patient', [App\Http\Controllers\PatientController::class, 'bookingList'])->name('patient.booking-list');
 Route::get('/doctor/status/update/{id}', [App\Http\Controllers\PatientController::class, 'toggleStatus'])->name('update.status');
+
+// patient route
+Route::get('/booking/{id}/{date}', [App\Http\Controllers\BookingController::class, 'index'])->name('booking.index');
+Route::post('/booking/confirm', [App\Http\Controllers\BookingController::class, 'confirm'])->name('booking.confirm');
+Route::post('/booking/store', [App\Http\Controllers\BookingController::class, 'store'])->name('booking.store');
+Route::get('/dashboard/my-booking', [App\Http\Controllers\BookingController::class, 'myBookings'])->name('my-booking');

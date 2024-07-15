@@ -36,22 +36,18 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            
                         </div>
                         <div class="form-group">
                             <label>Address</label>
                             <input type="text" name="address" class="form-control" value="{{auth()->user()->address}}">
-                            
                         </div>
                         <div class="form-group">
                             <label>Phone number</label>
-                            <input type="text" name="phone_number" class="form-control" value="{{auth()->user()->phone_number}}">
-                            
+                            <input type="text" name="phone_number" class="form-control" value="{{auth()->user()->phone_number}}">                            
                         </div>
                         <div class="form-group">
                             <label>Date of Birth</label>
                             <input type="date" name="dob" class="form-control" value="{{auth()->user()->dob}}">
-                            
                         </div>
                         <div class="form-group">
                             <label>Gender</label>
@@ -64,21 +60,16 @@
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
-                       
-                            <div class="form-group">
+                            @enderror
+                       </div>
+
+                        <div class="form-group">
                             <label>Bio</label>
-                            <textarea name="description" class="form-control">{{auth()->user()->description}}</textarea>
-                            
+                            <textarea name="description" class="form-control">{{auth()->user()->description}}</textarea>                            
                         </div>
                         <div class="form-group">
-                            
                             <button class="btn btn-primary" type="submit">Update</button>
-                            
                         </div>
-                            
-                        </div>
-                        
                     </form>
                     
                 </div>
@@ -88,7 +79,7 @@
             <div class="card">
                 <div class="card-header">Update Image</div>
                 <form action="{{route('profile.pic')}}" method="post" enctype="multipart/form-data">@csrf
-                <div class="card-body">
+                    <div class="card-body">
                     @if(!auth()->user()->image)
                     <img src="{{asset('img/user-profile.svg')}}" width="120">
                     @else 
@@ -105,8 +96,8 @@
                                 @enderror
                     <button type="submit" class="btn btn-primary">Update</button>
                     
-                </div>
-            </form>
+                    </div>
+                </form>
             </div>
         </div>
 
