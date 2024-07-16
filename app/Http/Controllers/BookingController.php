@@ -98,14 +98,14 @@ class BookingController extends Controller
 
         //send email notification
         $user = auth()->user(); // Get the authenticated user
-        $doctor = User::find($doctorId); // Assuming this fetches the doctor's information
+        $doctor = User::find($doctorId); // fetches the doctor's information
 
         $mailData = [
             'name' => $user->name,
-            'time' => $time, // Use the variable instead of $request->time for consistency
-            'date' => $date, // Use the variable instead of $request->date for consistency
-            'doctorName' => $doctor ? $doctor->name : 'Doctor', // Use the fetched doctor's name
-            'doctorAddress' => $doctor ? $doctor->address : 'Not available' // Assuming 'address' is the attribute for the doctor's address
+            'time' => $time,
+            'date' => $date,
+            'doctorName' => $doctor ? $doctor->name : 'Doctor',
+            'doctorAddress' => $doctor ? $doctor->address : 'Not available'
         ];
 
         try {
@@ -130,7 +130,11 @@ class BookingController extends Controller
      */
     public function myBookings()
     {
-        $bookings = Booking::latest()->where('user_id', auth()->user()->id)->get();
+        $bookings = Booking::latest()
+            ->where('user_id', auth()->user()->id)
+            ->paginate(10);
+
+
         return view('dashboard.patient.booking.my-booking', compact('bookings'));
     }
     /**

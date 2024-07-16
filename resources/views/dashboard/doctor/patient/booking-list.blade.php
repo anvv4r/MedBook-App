@@ -66,9 +66,14 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php
+                                $perPage = $bookings->perPage();
+                                $currentPage = $bookings->currentPage();
+                                $startingIndex = ($currentPage - 1) * $perPage;
+                            @endphp
                             @forelse($bookings as $key => $booking)
                                 <tr>
-                                    <th scope="row">{{$key + 1}}</th>
+                                    <th scope="row">{{ $startingIndex + $key + 1 }}</th>
                                     <td>{{$booking->user->name}}</td>
                                     <td>{{$booking->user->gender}}</td>
                                     <td>{{$booking->user->email}}</td>
@@ -81,8 +86,8 @@
                                                     class="btn btn-primary">Pending</button></a>
                                         @else 
 
-                                               <a href="{{route('update.status', [$booking->id])}}"><button
-                                                        class="btn btn-danger">Checked</button></a>
+                                            <a href="{{route('update.status', [$booking->id])}}"><button
+                                                    class="btn btn-danger">Checked</button></a>
                                         @endif
                                     </td>
                                 </tr>

@@ -23,9 +23,14 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php
+                                $perPage = $bookings->perPage();
+                                $currentPage = $bookings->currentPage();
+                                $startingIndex = ($currentPage - 1) * $perPage;
+                            @endphp
                             @forelse($bookings as $key => $booking)
                                 <tr>
-                                    <th scope="row">{{$key + 1}}</th>
+                                    <th scope="row">{{ $startingIndex + $key + 1 }}</th>
                                     <td>{{$booking->doctor->name}}</td>
                                     <td>{{$booking->time}}</td>
                                     <td>{{$booking->date}}</td>
@@ -34,6 +39,7 @@
                                         @if($booking->status == 0)
                                             <button class="btn btn-primary">Not visited</button>
                                         @else 
+
                                             <button class="btn btn-danger">Visited</button>
                                         @endif
                                     </td>
@@ -41,8 +47,12 @@
                             @empty
                                 <td>You have no any appointments</td>
                             @endforelse
-
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="6">{{ $bookings->links() }}</td>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>
