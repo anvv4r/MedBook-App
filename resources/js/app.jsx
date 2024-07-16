@@ -1,12 +1,7 @@
 import React from "react";
-import HomePage from "./component/HomePage";
 
 function App() {
-    return (
-        <>
-            <HomePage />
-        </>
-    );
+    return <></>;
 }
 
 // Assuming your index.html has a div with id="container"
