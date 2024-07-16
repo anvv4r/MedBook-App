@@ -25,8 +25,22 @@
         <nav>
             @if (Route::has('login'))
                 @auth
-                    <a href="{{ route('dashboard') }}">
-                        <h3>Dashboard</h3>
+
+                    @if(auth()->check() && auth()->user()->role?->name === 'admin')
+
+                        <a href="/admin/dashboard">
+                            <h3>Admin Dashboard</h3>
+                        </a>
+                    @elseif(auth()->check() && auth()->user()->role?->name === 'doctor')
+                        <a href="/doctor/dashboard">
+
+                            <h3>Doctor Dashboard</h3>
+                        </a>
+                    @elseif(auth()->check() && auth()->user()->role?->name === 'patient')
+                        <a href="/patient/dashboard">
+                            <h3>Patient Dashboard</h3>
+                        </a>
+                    @endif
                     </a>
                     <a href="{{ route('logout') }}"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

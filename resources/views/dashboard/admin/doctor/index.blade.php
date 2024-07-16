@@ -17,10 +17,10 @@
             <nav class="breadcrumb-container" aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href="/dashboard"><i class="ik ik-home"></i></a>
+                        <a href="/admin/dashboard"><i class="ik ik-home"></i></a>
                     </li>
                     <li class="breadcrumb-item">
-                        <a href="/doctor">Doctors</a>
+                        <a href="/admin/doctor">Doctors</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">Index</li>
                 </ol>

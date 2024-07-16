@@ -1,5 +1,33 @@
 @extends('dashboard.layouts.master')
 @section('content')
+
+<div class="page-header">
+    <div class="row align-items-end">
+        <div class="col-lg-8">
+
+            <div class="page-header-title">
+                <i class="ik ik-command bg-blue"></i>
+                <div class="d-inline">
+                    <h5>Patient Appointments</h5>
+                    <span>List</span>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <nav class="breadcrumb-container" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="/doctor/dashboard"><i class="ik ik-home"></i></a>
+                    </li>
+                    <li class="breadcrumb-item"><a href="/doctor/patient">Patient Appointments</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">List</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
@@ -13,8 +41,8 @@
                         Filter by Date :&nbsp;
                         <div class="row">
                             <div class="col-md-10">
-                                <input type="text" class="form-control datetimepicker-input" id="datepicker"
-                                    data-toggle="datetimepicker" data-target="#datepicker" name="date">
+                                <input type="text" class="form-control datetimepicker-input" id="bookdatepicker"
+                                    data-toggle="datetimepicker" data-target="#bookdatepicker" name="date">
                             </div>
                             <div class="col-md-2">
                                 <button type="submit" class="btn btn-primary">Search</button>
@@ -50,19 +78,25 @@
                                     <td>
                                         @if($booking->status == 0)
                                             <a href="{{route('update.status', [$booking->id])}}"><button
-                                                    class="btn btn-primary">
-                                                    Pending</button></a>
+                                                    class="btn btn-primary">Pending</button></a>
                                         @else 
-                                            <a href="{{route('update.status', [$booking->id])}}"><button class="btn btn-danger">
-                                                    Cheked</button></a>
+
+                                               <a href="{{route('update.status', [$booking->id])}}"><button
+                                                        class="btn btn-danger">Checked</button></a>
                                         @endif
                                     </td>
                                 </tr>
                             @empty
-                                <td>There is no any appointments!</td>
+                                <tr>
+                                    <td colspan="8">There are no appointments!</td>
+                                </tr>
                             @endforelse
-
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="8">{{ $bookings->links() }}</td>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>

@@ -26,21 +26,24 @@ class BookingController extends Controller
             ->where('doc_id', $id)
             ->where('date', $date)
             ->get();
-        $appointments = TimeSlot::where('doc_id', $id)->where('date', $date)->get();
-        $doctorName = User::where('id', $id)->first()->name;
+
+        $appointments = TimeSlot::where('doc_id', $id)
+            ->where('date', $date)
+            ->get();
+
         $appointment = $appointments->first();
+
+        $doctorName = User::where('id', $id)->first()->name;
+
         $doctorId = $id;
 
         return view('booking.index', compact('user', 'times', 'appointments', 'appointment', 'doctorName', 'date', 'id', 'doctorId'));
     }
-
-
     /**
      * Show the confirmation page.
      */
     public function confirm(Request $request)
     {
-
         // dd($request->all()); // This will dump all request data
 
         // Validate the request data if needed
@@ -84,26 +87,31 @@ class BookingController extends Controller
         $booking->status = 0;
         $booking->save();
 
-
         // Update the status of the time slot
-        TimeSlot::where('doc_id', $doctorId)
+        $time_slot = TimeSlot::where('doc_id', $doctorId)
             ->where('time', $time)
             ->where('date', $date)
-            ->update(['status' => 1]);
+            ->first();
+        // dd($time_slot, $time, $date);
+        $time_slot->status = 1;
+        $time_slot->save();
 
         //send email notification
-        $doctorName = User::where('id', $doctorId)->first(); // Use $doctorId instead of $request->doctorId
+        $user = auth()->user(); // Get the authenticated user
+        $doctor = User::find($doctorId); // Assuming this fetches the doctor's information
+
         $mailData = [
-            'name' => auth()->user()->name,
-            'time' => $request->time,
-            'date' => $request->date,
-            'doctorName' => $doctorName ? $doctorName->name : 'Doctor' // Add a null check
+            'name' => $user->name,
+            'time' => $time, // Use the variable instead of $request->time for consistency
+            'date' => $date, // Use the variable instead of $request->date for consistency
+            'doctorName' => $doctor ? $doctor->name : 'Doctor', // Use the fetched doctor's name
+            'doctorAddress' => $doctor ? $doctor->address : 'Not available' // Assuming 'address' is the attribute for the doctor's address
         ];
+
         try {
-            \Mail::to(auth()->user()->email)->send(new SendBookingDetails($mailData));
-
+            \Mail::to($user->email)->send(new SendBookingDetails($mailData));
         } catch (\Exception $e) {
-
+            return redirect()->route('home.doctor', ['id' => $doctorId])->with('error', 'Failed to send email notification!');
         }
 
         return redirect()->route('home.doctor', ['id' => $doctorId])->with('success', 'Appointment booked successfully!');

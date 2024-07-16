@@ -16,21 +16,31 @@
                 <nav id="main-menu-navigation" class="navigation-main">
                     <div class="nav-lavel">Navigation</div>
                     <div class="nav-item active">
-                        <a href="{{route('dashboard')}}"><i class="ik ik-bar-chart-2"></i>
-                            @if(auth()->check() && auth()->user()->role?->name === 'admin')
+                        @if(auth()->check() && auth()->user()->role?->name === 'admin')
+                            <a href="/admin/dashboard"><i class="ik ik-bar-chart-2"></i>
                                 <span>Admin Dashboard</span>
-                            @elseif(auth()->check() && auth()->user()->role?->name === 'doctor')
+                            </a>
+                        @elseif(auth()->check() && auth()->user()->role?->name === 'doctor')
+                            <a href="/doctor/dashboard"><i class="ik ik-bar-chart-2"></i>
                                 <span>Doctor Dashboard</span>
-                            @elseif(auth()->check() && auth()->user()->role?->name === 'patient')
+                            </a>
+                        @elseif(auth()->check() && auth()->user()->role?->name === 'patient')
+                            <a href="/patient/dashboard"><i class="ik ik-bar-chart-2"></i>
                                 <span>Patient Dashboard</span>
-                            @endif
-                        </a>
+                            </a>
+                        @endif
                     </div>
                     <div class="nav-item has-sub">
                         <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>User Profile</span> <span
                                 class="badge badge-danger"></span></a>
                         <div class="submenu-content">
-                            <a href="{{route('profile.index')}}" class="menu-item">View</a>
+                            @if(auth()->check() && auth()->user()->role?->name === 'admin')
+                                <a href="/admin/user-profile" class="menu-item">View</a>
+                            @elseif(auth()->check() && auth()->user()->role?->name === 'doctor')
+                                <a href="/doctor/user-profile" class="menu-item">View</a>
+                            @elseif(auth()->check() && auth()->user()->role?->name === 'patient')
+                                <a href="/patient/user-profile" class="menu-item">View</a>
+                            @endif
                         </div>
                     </div>
 

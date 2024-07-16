@@ -94,8 +94,9 @@ class DoctorController extends Controller
         $this->validateUpdate($request, $id);
         $data = $request->all();
         $user = User::find($id);
-        $imageName = $user->image;
         $userPassword = $user->password;
+        $imageName = $user->image;
+
         if ($request->hasFile('image')) {
             $imageName = (new User)->userAvatar($request);
             unlink(public_path('images/' . $user->image));

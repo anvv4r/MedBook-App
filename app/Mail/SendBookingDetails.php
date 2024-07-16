@@ -5,16 +5,19 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
+
 use Illuminate\Queue\SerializesModels;
 
 class SendBookingDetails extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $mailData;
+
     /**
      * Create a new message instance.
+     *
+     * @param array $mailData Data to be used in the email.
      */
     public function __construct($mailData)
     {
@@ -22,31 +25,17 @@ class SendBookingDetails extends Mailable
     }
 
     /**
-     * Get the message envelope.
+     * Build the message.
+     *
+     * @return $this
      */
-    // public function envelope(): Envelope
-    // {
-    //     return new Envelope(
-    //         subject: 'Appointment Mail',
-    //     );
-    // }
-
-    /**
-     * Get the message content definition.
-     */
-    // public function content(): Content
-    // {
-    //     return new Content(
-    //         view: 'view.name',
-    //         data: ['key' => 'value'],
-
-    //         // 'text' => 'This is the text content of the email.',
-
-    //     );
-    // }
     public function build()
     {
-        return $this->view('email.appointment');
+        return $this->subject('Booking Confirmation')
+            ->view('email.bookingDetails')
+            ->with([
+                'mailData' => $this->mailData,
+            ]);
     }
     /**
      * Get the attachments for the message.

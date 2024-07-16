@@ -15,16 +15,20 @@ class PatientController extends Controller
      */
     public function bookingList(Request $request)
     {
-        // filter bookings by date
-        if ($request->date) {
-            $bookings = Booking::latest()->where('date', $request->date)->paginate(20);
-            return view('dashboard.doctor.patient.booking-list', compact('bookings'));
-        }
 
         $doctorId = auth()->id(); // Get the logged-in doctor's ID
 
+        // filter bookings by date
+        if ($request->date) {
+            $bookings = Booking::latest()->where('date', $request->date)
+                ->where('doctor_id', $doctorId)
+                ->paginate(10);
+            return view('dashboard.doctor.patient.booking-list', compact('bookings'));
+        }
+
         // Retrieve only bookings that belong to the logged-in doctor
-        $bookings = Booking::where('doctor_id', $doctorId)->get();
+        $bookings = Booking::where('doctor_id', $doctorId)
+            ->paginate(10);
 
         return view('dashboard.doctor.patient.booking-list', compact('bookings'));
     }
@@ -80,7 +84,13 @@ class PatientController extends Controller
         $data = $request->all();
         $user = User::find($id);
         $userPassword = $user->password;
-        $data['image'] = (new User)->userAvatar($request); // Ensure this method works as expected
+        $imageName = $user->image;
+
+        if ($request->hasFile('image')) {
+            $imageName = (new User)->userAvatar($request);
+            unlink(public_path('images/' . $user->image));
+        }
+        $data['image'] = $imageName;
         if ($request->password) {
             $data['password'] = bcrypt($request->password);
         } else {

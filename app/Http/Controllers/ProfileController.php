@@ -36,8 +36,6 @@ class ProfileController extends Controller
             $user = User::where('id', auth()->user()->id)->update(['image' => $name]);
 
             return redirect()->back()->with('message', 'profile updated');
-
-
         }
     }
 

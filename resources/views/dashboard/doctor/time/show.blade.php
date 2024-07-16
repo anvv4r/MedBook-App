@@ -49,6 +49,7 @@
 
     <form action="{{ route('time.update', ['date' => $date]) }}" method="post">
         @csrf
+
         <div class="card">
             <div class="card-header">
 

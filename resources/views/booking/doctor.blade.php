@@ -16,9 +16,11 @@
             <h3>Available Date</h3>
             <ul>
                 @foreach($appointments as $appointment)
-                    <li>{{ $appointment->date }} &nbsp;&nbsp;<a class="book_button"
-                            href="{{ route('booking.index', ['id' => $doctorId, 'date' => $appointment->date]) }}">Make
-                            Appointment</a></li>
+                    @if($appointment->date != \Carbon\Carbon::today()->toDateString())
+                        <li>{{ $appointment->date }} &nbsp;&nbsp;<a class="book_button"
+                                href="{{ route('booking.index', ['id' => $doctorId, 'date' => $appointment->date]) }}">Make
+                                Appointment</a></li>
+                    @endif
                 @endforeach
             </ul>
         </div>
