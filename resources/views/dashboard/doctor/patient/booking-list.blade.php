@@ -33,7 +33,7 @@
         <div class="col-md-10">
             <div class="card">
                 <div class="card-header">
-                    <h3>You have {{$bookings->count()}} Patient appointments.</h3>
+                    <h3>You have {{$bookings->total()}} Patient appointments.</h3>
                 </div>
                 <form action="{{route('patient.booking-list')}}" method="GET">
 

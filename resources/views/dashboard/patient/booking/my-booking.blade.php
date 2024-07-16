@@ -7,7 +7,7 @@
         <div class="col-md-10">
             <div class="card">
                 <div class="card-header">
-                    <h3>You have {{$bookings->count()}} bookings appointment.</h3>
+                    <h3>You have {{$bookings->total()}} bookings appointment.</h3>
                 </div>
 
                 <div class="card-body">
