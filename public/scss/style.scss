@@ -41,13 +41,11 @@ body {
         @media screen and (max-width: 768px) {
             margin-top: 1em;
             width: 60%;
-            align-items: flex-start;
         }
 
         @media screen and (max-width: 425px) {
             margin-top: 1em;
             width: 60%;
-            align-items: flex-start;
         }
 
         h2 {
@@ -227,7 +225,6 @@ body {
 
         @media screen and (max-width: 768px) {
             width: 100%;
-
         }
 
         h3 {
@@ -245,6 +242,11 @@ body {
             gap: 1.5em;
             width: 100%;
 
+            @media screen and (max-width: 768px) {
+                flex-direction: column;
+                gap: 0em;
+            }
+
             .search_list_item {
                 display: flex;
                 flex-direction: row;
@@ -256,8 +258,7 @@ body {
 
                 @media screen and (max-width: 768px) {
                     flex-direction: column;
-                    width: 100%;
-
+                    width: 90%;
                 }
 
                 img {
