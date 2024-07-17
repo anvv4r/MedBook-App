@@ -23,9 +23,12 @@
             </a>
         </div>
         <nav>
+            <button class="nav-toggle" aria-label="toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+
             @if (Route::has('login'))
                 @auth
-
                     @if(auth()->check() && auth()->user()->role?->name === 'admin')
 
                         <a href="/admin/dashboard">
@@ -33,7 +36,6 @@
                         </a>
                     @elseif(auth()->check() && auth()->user()->role?->name === 'doctor')
                         <a href="/doctor/dashboard">
-
                             <h3>Doctor Dashboard</h3>
                         </a>
                     @elseif(auth()->check() && auth()->user()->role?->name === 'patient')
@@ -50,21 +52,16 @@
                         @csrf
                     </form>
                 @else
-                    <a href="/login">
-                        <h3>Login</h3>
-                    </a>
-                    <a href="/register">
-                        <h3>Register as Patient</h3>
-                    </a>
                     <a href="/register-doctor">
-                        <h3>Register as Practitioner</h3>
+                        <h3>List your practice</h3>
+                    </a>
+                    <a href="/login">
+                        <h3>Login/Sign up</h3>
                     </a>
                 @endauth
             @endif
-
             <a href="#story">
                 <h3>Our Story</h3>
             </a>
-
         </nav>
     </header>

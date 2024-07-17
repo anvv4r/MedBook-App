@@ -31,23 +31,37 @@
         <h3>&copy; 2024 MedBook. All rights reserved.</h3>
     </div>
 </footer>
-</body>
-<!-- <script>
-    document.getElementById('load-more').addEventListener('click', function () {
-        var page = this.getAttribute('data-page');
-        var button = this;
-        fetch(`/search?search={{ request('search') }}&page=` + page, {
-            headers: {
-                'X-Requested-With': 'XMLHttpRequest'
-            }
-        })
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('doctor-list').insertAdjacentHTML('beforeend', data);
-                var nextPage = parseInt(page) + 1;
-                button.setAttribute('data-page', nextPage);
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelectorAll('nav a');
+        const logo = document.querySelector('.logo'); // Assuming you have a logo with class 'logo'
+        const nav = document.querySelector('nav'); // Assuming your navigation container has a 'nav' tag
+        const header = document.querySelector('.header'); // Select the header element
+
+        navToggle.addEventListener('click', function () {
+            // Toggle navigation links visibility
+            navLinks.forEach(link => {
+                if (link.style.display === "block") {
+                    link.style.display = "none";
+                } else {
+                    link.style.display = "block";
+                }
             });
+
+            // Toggle logo visibility and navigation width
+            if (logo.style.display === 'none') {
+                logo.style.display = 'block'; // Show the logo if it's hidden
+                nav.style.width = ''; // Reset the navigation width
+                header.style.justifyContent = ''; // Reset header style to default
+            } else {
+                logo.style.display = 'none'; // Hide the logo
+                nav.style.width = '80%'; // Expand the navigation width to 80%
+                header.style.justifyContent = 'flex-end'; // Change header style to justify content to the end
+            }
+        });
     });
-</script> -->
+</script>
+</body>
 
 </html>

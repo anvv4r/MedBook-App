@@ -5,7 +5,7 @@
     <div class="container">
         <div class="search_bar">
             <form class="home-form" action="{{ route('search') }}" method="GET">
-                <input class="home-input" type="search" name="search" id="search" />
+                <input class="home-input" type="search" name="search" id="search" placeholder="Search more.." />
                 <button class="home-button" type="submit">Search</button>
             </form>
         </div>
