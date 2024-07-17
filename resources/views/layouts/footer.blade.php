@@ -35,12 +35,11 @@
     document.addEventListener('DOMContentLoaded', function () {
         const navToggle = document.querySelector('.nav-toggle');
         const navLinks = document.querySelectorAll('nav a');
-        const logo = document.querySelector('.logo'); // Assuming you have a logo with class 'logo'
-        const nav = document.querySelector('nav'); // Assuming your navigation container has a 'nav' tag
-        const header = document.querySelector('.header'); // Select the header element
+        const logo = document.querySelector('.logo');
+        const nav = document.querySelector('nav');
+        const header = document.querySelector('.header');
 
         navToggle.addEventListener('click', function () {
-            // Toggle navigation links visibility
             navLinks.forEach(link => {
                 if (link.style.display === "block") {
                     link.style.display = "none";
@@ -49,15 +48,14 @@
                 }
             });
 
-            // Toggle logo visibility and navigation width
             if (logo.style.display === 'none') {
-                logo.style.display = 'block'; // Show the logo if it's hidden
-                nav.style.width = ''; // Reset the navigation width
-                header.style.justifyContent = ''; // Reset header style to default
+                logo.style.display = '';
+                nav.style.width = '';
+                header.style.justifyContent = '';
             } else {
-                logo.style.display = 'none'; // Hide the logo
-                nav.style.width = '80%'; // Expand the navigation width to 80%
-                header.style.justifyContent = 'flex-end'; // Change header style to justify content to the end
+                logo.style.display = 'none';
+                nav.style.width = '80%';
+                header.style.justifyContent = 'flex-end';
             }
         });
     });

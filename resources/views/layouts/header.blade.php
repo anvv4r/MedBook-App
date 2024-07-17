@@ -4,13 +4,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>MedBook</title>
     <link rel="stylesheet" href="{{ asset('scss/style.scss') }}">
     <link rel="icon" type="image/svg" href="{{ asset('img/medbook-logo.svg') }}">
-
 </head>
 
 <body>
@@ -26,7 +23,6 @@
             <button class="nav-toggle" aria-label="toggle navigation">
                 <span class="hamburger"></span>
             </button>
-
             @if (Route::has('login'))
                 @auth
                     @if(auth()->check() && auth()->user()->role?->name === 'admin')

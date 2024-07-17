@@ -37,10 +37,6 @@
                         <p>No available doctors found.</p>
                     </div>
                 @endforelse
-                <!-- <div id="doctor-list">
-                    @include('partials.doctors', ['doctors' => $doctors])
-                </div>
-                <button id="load-more" data-page="2">Load More</button> -->
             </div>
         </div>
     </div>

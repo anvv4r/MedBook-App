@@ -17,7 +17,6 @@ body {
     font-size: 16px;
     margin: 0;
     max-width: 100%;
-
 }
 
 .header {
@@ -42,25 +41,18 @@ body {
         @media screen and (max-width: 768px) {
             margin-top: 1em;
             width: 60%;
+            align-items: flex-start;
         }
 
         @media screen and (max-width: 425px) {
             margin-top: 1em;
             width: 60%;
-
+            align-items: flex-start;
         }
 
         h2 {
             font-size: 1.5em;
             color: #4d4d4d;
-
-            @media screen and (max-width: 768px) {
-                font-size: 1.2em;
-            }
-
-            @media screen and (max-width: 425px) {
-                font-size: 1em;
-            }
         }
 
         img {
@@ -118,6 +110,7 @@ body {
     border: none;
     cursor: pointer;
     margin-top: 0em;
+    margin-bottom: 0.5em;
     width: 15%;
 }
 
