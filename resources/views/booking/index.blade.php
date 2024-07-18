@@ -6,7 +6,7 @@
     <div class="booking_detail">
         <div>
             <p>Appointment Date : {{ $appointment->date }}</p>
-            <p>Doctor name: {{ $doctorName }}</p>
+            <p>Doctor Name : {{ $doctorName }}</p>
         </div>
         <div>
             <form action="{{ route('booking.confirm') }}" method="POST">

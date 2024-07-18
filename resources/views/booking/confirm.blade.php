@@ -15,11 +15,12 @@
 
             <h3>Your booking details :</h3>
             <p>Patient Name : {{ $user->name }}</p>
-            <p>Doctor : {{ $doctorData->name }}</p>
+            <p>Doctor Name : {{ $doctorData->name }}</p>
             <p>Specialisation : {{ $doctorData->specialty }}</p>
             <p>Date : {{ $bookingData['date'] }}</p>
             <p>Time : {{ $bookingData['time'] }}</p>
-            <p>Doctor Address : {{ $doctorData->address}}</p>
+            <p>Practicioner Address :</p>
+            <p>{{ $doctorData->address}}</p>
 
             <button class="book_button" type="submit">Confirm Booking</button>
         </form>
