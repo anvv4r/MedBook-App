@@ -33,11 +33,15 @@
                         </div>
                     </div>
                 @empty
-                    <div>
+                    <div class="search_list">
                         <p>No available doctors found.</p>
                     </div>
+
                 @endforelse
             </div>
+            <div id="doctor-list" class="search_list">
+            </div>
+            <button class="loadmore" id="load-more" data-page="2">Load More</button>
         </div>
     </div>
 </section>

@@ -18,7 +18,7 @@
         </div>
     </div>
 @empty
-    <div>
+    <div class="search_list">
         <p>No available doctors found.</p>
     </div>
 @endforelse

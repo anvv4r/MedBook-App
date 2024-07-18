@@ -14,6 +14,36 @@ class FrontendController extends Controller
      * Display a listing of the resource.
      */
 
+    public function index()
+    {
+        $doctors = User::where('role_id', 2)
+            ->whereHas('timeslots', function ($query) {
+                $query->where('status', 0);
+            })
+            ->latest()
+            ->take(10)
+            ->get();
+
+        return view('index', compact('doctors'));
+    }
+
+
+    public function loadmore(Request $request)
+    {
+        $search = $request->get('search');
+        $doctors = User::where('role_id', 2)
+            ->whereHas('timeslots', function ($query) {
+                $query->where('status', 0);
+            })
+            ->paginate(6);
+
+        if ($request->ajax()) {
+            return view('partials.doctors', compact('doctors'))->render();
+        }
+
+        return view('index', compact('doctors'));
+    }
+
     public function search(Request $request)
     {
         $search = $request->get('search');
@@ -27,34 +57,14 @@ class FrontendController extends Controller
                     ->orWhere('education', 'like', '%' . $search . '%')
                     ->orWhere('specialty', 'like', '%' . $search . '%');
             })
-            ->latest()
-            ->take(10)
-            ->get();
+            ->paginate(6);
+
+        if ($request->ajax()) {
+            return view('partials.doctors', compact('doctors'))->render();
+        }
 
         return view('index', compact('doctors'));
     }
-
-    // public function search(Request $request)
-    // {
-    //     $search = $request->get('search');
-    //     $doctors = User::where('role_id', 2)
-    //         ->whereHas('timeslots', function ($query) {
-    //             $query->where('status', 0);
-    //         })
-    //         ->where(function ($query) use ($search) {
-    //             $query->where('name', 'like', '%' . $search . '%')
-    //                 ->orWhere('address', 'like', '%' . $search . '%')
-    //                 ->orWhere('education', 'like', '%' . $search . '%')
-    //                 ->orWhere('specialty', 'like', '%' . $search . '%');
-    //         })
-    //         ->paginate(6);
-
-    //     if ($request->ajax()) {
-    //         return view('partials.doctors', compact('doctors'))->render();
-    //     }
-
-    //     return view('index', compact('doctors'));
-    // }
 
     /**
      * Display the specified resource.

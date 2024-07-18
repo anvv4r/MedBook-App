@@ -5,8 +5,10 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // });
+Route::get('/', [App\Http\Controllers\FrontendController::class, 'index'])->name('index');
+Route::get('/', [App\Http\Controllers\FrontendController::class, 'loadmore'])->name('index');
 
-Route::get('/', [App\Http\Controllers\FrontendController::class, 'search'])->name('search');
+Route::get('/search', [App\Http\Controllers\FrontendController::class, 'search'])->name('search');
 Route::get('/doctor/{id}', [App\Http\Controllers\FrontendController::class, 'show'])->whereNumber('id')->name('home.doctor');
 Route::get('/register-doctor', [App\Http\Controllers\DocRegController::class, 'index'])->name('index');
 Route::post('/register-doctor', [App\Http\Controllers\DocRegController::class, 'storeDoctor'])->name('auth.register-doctor');
