@@ -12,7 +12,7 @@ body {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    color: $darkgray;
+    color: #4d4d4d;
     font-family: 'Nunito', sans-serif;
     font-size: 16px;
     margin: 0;
@@ -238,7 +238,7 @@ body {
             align-items: flex-start;
             // flex-direction: column;
             flex-wrap: wrap;
-            gap: 1.5em;
+            gap: 0.5em;
             width: 100%;
 
             @media screen and (max-width: 768px) {
@@ -255,7 +255,7 @@ body {
                 padding: 1em;
                 width: 40%;
 
-                @media screen and (max-width: 768px) {
+                @media screen and (max-width: 769px) {
                     flex-direction: column;
                     width: 90%;
                 }
@@ -322,6 +322,13 @@ body {
             margin-bottom: 0;
         }
 
+        h4 {
+            color: #4d4d4d;
+            font-size: 1em;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
         p {
             color: #4d4d4d;
             font-size: 1em;
@@ -350,6 +357,7 @@ body {
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
+            margin-bottom: 1em;
             gap: 1em;
             width: 50%;
 
@@ -469,7 +477,7 @@ form {
     width: 100%;
 
     @media screen and (max-width: 768px) {
-        gap: 0em;
+        gap: 0.5em;
     }
 }
 
@@ -612,6 +620,12 @@ button {
     font-size: 1em;
     padding: 0.5em 1em 0.5em 1em;
     text-align: center;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+
+    @media screen and (max-width: 769px) {
+        margin-top: 1em;
+    }
 }
 
 label {
