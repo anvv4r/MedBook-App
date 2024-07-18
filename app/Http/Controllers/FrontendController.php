@@ -27,7 +27,6 @@ class FrontendController extends Controller
         return view('index', compact('doctors'));
     }
 
-
     public function loadmore(Request $request)
     {
         $search = $request->get('search');
@@ -94,7 +93,5 @@ class FrontendController extends Controller
         // Pass the user, age, and appointments to the view
         return view('booking.doctor', compact('user', 'age', 'appointments', 'doctor', 'doctorId'));
     }
-
-
 
 }

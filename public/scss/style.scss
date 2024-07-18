@@ -198,8 +198,8 @@ body {
     margin-top: 2em;
     width: 70%;
 
-    @media screen and (max-width: 768px) {
-        width: 80%;
+    @media screen and (max-width: 769px) {
+        width: 100%;
     }
 
     @media screen and (max-width: 425px) {
@@ -394,8 +394,14 @@ body {
     padding: 1em;
     width: 60%;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 769px) {
         font-size: 0.9em;
+        padding: 1em;
+        width: 50%;
+    }
+
+    @media screen and (max-width: 426px) {
+        font-size: 0.8em;
         padding: 1em;
         width: 50%;
     }
@@ -403,7 +409,7 @@ body {
 
 .home-button {
     background-color: #004ea1;
-    border: none;
+    border: 1px solid #004ea1;
     border-radius: 5px;
     color: #fff;
     cursor: pointer;
@@ -414,8 +420,13 @@ body {
     transition: background-color 0.3s ease;
     width: 30%;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 769px) {
         font-size: 0.9em;
+        width: 40%;
+    }
+
+    @media screen and (max-width: 426px) {
+        font-size: 0.8em;
         width: 40%;
     }
 }
@@ -529,7 +540,7 @@ textarea {
 
 .loadmore {
     background-color: #fff;
-    border: #aed9ff 1px solid;
+    border: #bbbbbb 1.5px solid;
     border-radius: 5px;
     color: #4d4d4d;
     cursor: pointer;
@@ -537,12 +548,26 @@ textarea {
     margin-top: 1em;
     padding: 1em 2em;
     text-align: center;
+    // align-self: center;
     transition: background-color 0.3s ease;
     width: 25%;
 
-    &:hover {
-        background-color: #aed9ff;
+    @media screen and (max-width: 1025px) {
+        font-size: 0.9em;
+        width: 40%;
     }
+
+    @media screen and (max-width: 769px) {
+        font-size: 0.9em;
+        width: 40%;
+    }
+
+    @media screen and (max-width: 426px) {
+        font-size: 0.9em;
+        width: 50%;
+
+    }
+
 }
 
 button {
