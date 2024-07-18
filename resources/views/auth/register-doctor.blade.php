@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-    <h3>Register as Practicioner</h3>
+    <h3>Register as Practitioner</h3>
     <div class="form-body">
         <form action="{{route('auth.register-doctor')}}" method="post" enctype="multipart/form-data">
             @csrf

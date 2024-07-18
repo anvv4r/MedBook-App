@@ -40,7 +40,7 @@ class DocRegController extends Controller
         // Log in the newly created user
         Auth::login($user);
 
-        return redirect('/dashboard')->with('message', 'Doctor created successfully');
+        return redirect('/doctor/dashboard')->with('message', 'Doctor created successfully');
     }
 
     public function validateStore($request)

@@ -19,7 +19,7 @@
             <p>Specialisation : {{ $doctorData->specialty }}</p>
             <p>Date : {{ $bookingData['date'] }}</p>
             <p>Time : {{ $bookingData['time'] }}</p>
-            <p>Practicioner Address :</p>
+            <p>Practitioner Address :</p>
             <p>{{ $doctorData->address}}</p>
 
             <button class="book_button" type="submit">Confirm Booking</button>
