@@ -20,7 +20,6 @@
             <p>Date : {{ $bookingData['date'] }}</p>
             <p>Time : {{ $bookingData['time'] }}</p>
             <p>Doctor Address : {{ $doctorData->address}}</p>
-            <br>
 
             <button class="book_button" type="submit">Confirm Booking</button>
         </form>

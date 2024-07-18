@@ -14,7 +14,8 @@
                 <h4>{{ $doctor->name }}</h4>
             </a>
             <p>{{ $doctor->specialty }}</p>
-            <p>Address: {{ $doctor->address }}</p>
+            <h4>Address:</h4>
+            <p>{{ $doctor->address }}</p>
         </div>
     </div>
 @empty

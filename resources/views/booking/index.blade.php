@@ -21,7 +21,6 @@
                         <option value="{{ $time->time }}">{{ $time->time }}</option>
                     @endforeach
                 </select>
-                &nbsp;&nbsp;
                 <button class="book_button" type="submit">Book</button>
             </form>
         </div>
