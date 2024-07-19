@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Mail\SendBookingDetails;
+use Carbon\Carbon;
 
 class BookingController extends Controller
 {
@@ -24,7 +25,7 @@ class BookingController extends Controller
 
         $times = TimeSlot::where('status', 0)
             ->where('doc_id', $id)
-            ->where('date', $date)
+            ->where('date', '>', Carbon::today())
             ->get();
 
         $appointments = TimeSlot::where('doc_id', $id)

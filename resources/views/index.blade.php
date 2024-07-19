@@ -10,7 +10,7 @@
             </form>
         </div>
         <div class="search_result">
-            <h3>Available Doctors</h3>
+            <h3>Available Practitioners</h3>
             <div class="search_list">
                 @forelse($doctors as $doctor)
                     <div class="search_list_item">
@@ -35,7 +35,7 @@
                     </div>
                 @empty
                     <div class="search_list">
-                        <p>No available doctors found.</p>
+                        <p>No available practitioner found.</p>
                     </div>
 
                 @endforelse

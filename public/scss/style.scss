@@ -799,6 +799,7 @@ footer {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    gap: 1em;
     margin-top: 0em;
     margin-bottom: 1em;
     text-align: center;
@@ -815,7 +816,7 @@ footer {
 
         @media screen and (max-width: 768px) {
             flex-direction: column;
-            gap: 0em;
+            gap: 1em;
             height: 600px;
             margin-bottom: 1em;
         }

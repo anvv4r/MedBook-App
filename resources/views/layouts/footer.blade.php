@@ -16,14 +16,10 @@
     <div class="footer_container">
         <div class="footer_story" id="story">
             <h2>Our Story</h2>
-            MedBook is a platform that connects patients with healthcare
-            practitioners. We aim to make healthcare more accessible and
-            affordable for everyone. We believe that everyone should
-            have access to quality healthcare. We are proud to be part
-            of the local community. We support local artists and
-            musicians. We also host events and workshops. Lorem ipsum
-            dolor sit amet, consectetur adipiscing elit. Nullam auctor,
-            nunc nec
+            MedBook is a platform that connects patients with healthcare practitioners. We aim to make healthcare more
+            accessible for everyone, by giving clinics access to online bookings, appointment reminders, mobile
+            check-in, online new patient and practitioner registration, and online prescription renewals. Our mission is
+            to improve the health care experience for everyone.
         </div>
         <img src="{{ asset('img/blue-stet.jpg')}}" alt="MedBook" />
     </div>

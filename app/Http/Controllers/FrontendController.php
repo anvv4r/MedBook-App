@@ -7,6 +7,7 @@ use App\Models\User;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class FrontendController extends Controller
 {
@@ -84,6 +85,7 @@ class FrontendController extends Controller
 
         // Retrieve appointments for the user_id where the date is unique and user_id is the doctor's ID
         $appointments = TimeSlot::select('date')
+            ->where('date', '>', Carbon::yesterday())
             ->where('doc_id', $user->id)
             ->groupBy('date')
             ->get();
