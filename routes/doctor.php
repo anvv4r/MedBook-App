@@ -19,5 +19,6 @@ Route::middleware('can:doctor')->group(function () {
     Route::get('/patient', [App\Http\Controllers\PatientController::class, 'bookingList'])->name('patient.booking-list');
     Route::post('/patient', [App\Http\Controllers\PatientController::class, 'bookingList'])->name('patient.booking-list');
     Route::get('/status/update/{id}', [App\Http\Controllers\PatientController::class, 'toggleStatus'])->name('update.status');
+    Route::get('/patient/show/{id}', [App\Http\Controllers\PatientController::class, 'show'])->name('patient.show');
 
 });

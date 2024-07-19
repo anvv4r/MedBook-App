@@ -9,7 +9,7 @@
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="icon" href="{{asset('template/favicon.ico" type="image/x-icon')}}" />
+    <link rel="icon" type="image/svg" href="{{ asset('img/medbook-logo.svg') }}">
 
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
 

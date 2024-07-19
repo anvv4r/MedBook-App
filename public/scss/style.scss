@@ -501,7 +501,7 @@ form {
     gap: 1em;
     width: 100%;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 769px) {
         flex-direction: column;
     }
 }
@@ -513,6 +513,10 @@ form {
     align-items: flex-start;
     gap: 1em;
     width: 50%;
+
+    @media screen and (max-width: 426) {
+        width: 90%;
+    }
 }
 
 .form-textarea {

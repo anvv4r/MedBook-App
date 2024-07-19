@@ -97,22 +97,22 @@ class BookingController extends Controller
         $time_slot->save();
 
         //send email notification
-        $user = auth()->user(); // Get the authenticated user
-        $doctor = User::find($doctorId); // fetches the doctor's information
+        // $user = auth()->user(); // Get the authenticated user
+        // $doctor = User::find($doctorId); // fetches the doctor's information
 
-        $mailData = [
-            'name' => $user->name,
-            'time' => $time,
-            'date' => $date,
-            'doctorName' => $doctor ? $doctor->name : 'Doctor',
-            'doctorAddress' => $doctor ? $doctor->address : 'Not available'
-        ];
+        // $mailData = [
+        //     'name' => $user->name,
+        //     'time' => $time,
+        //     'date' => $date,
+        //     'doctorName' => $doctor ? $doctor->name : 'Doctor',
+        //     'doctorAddress' => $doctor ? $doctor->address : 'Not available'
+        // ];
 
-        try {
-            \Mail::to($user->email)->send(new SendBookingDetails($mailData));
-        } catch (\Exception $e) {
-            return redirect()->route('home.doctor', ['id' => $doctorId])->with('error', 'Failed to send email notification!');
-        }
+        // try {
+        //     \Mail::to($user->email)->send(new SendBookingDetails($mailData));
+        // } catch (\Exception $e) {
+        //     return redirect()->route('home.doctor', ['id' => $doctorId])->with('error', 'Failed to send email notification!');
+        // }
 
         return redirect()->route('home.doctor', ['id' => $doctorId])->with('success', 'Appointment booked successfully!');
     }

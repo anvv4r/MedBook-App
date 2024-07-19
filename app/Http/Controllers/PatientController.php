@@ -23,14 +23,20 @@ class PatientController extends Controller
             $bookings = Booking::latest()->where('date', $request->date)
                 ->where('doctor_id', $doctorId)
                 ->paginate(10);
-            return view('dashboard.doctor.patient.booking-list', compact('bookings'));
+
+            $users = User::where('role_id', 3)->get();
+
+            return view('dashboard.doctor.patient.booking-list', compact('bookings', 'users'));
         }
 
         // Retrieve only bookings that belong to the logged-in doctor
-        $bookings = Booking::where('doctor_id', $doctorId)
+        $bookings = Booking::with('user') // Eager load the user relationship
+            ->where('doctor_id', $doctorId)
             ->paginate(10);
 
-        return view('dashboard.doctor.patient.booking-list', compact('bookings'));
+        $users = User::where('role_id', 3)->get();
+
+        return view('dashboard.doctor.patient.booking-list', compact('bookings', 'users'));
     }
 
     /**
@@ -41,8 +47,8 @@ class PatientController extends Controller
         $booking = Booking::find($id);
         $booking->status = !$booking->status;
         $booking->save();
-        return redirect()->back();
 
+        return redirect()->back();
     }
 
     /**
@@ -65,6 +71,7 @@ class PatientController extends Controller
         // Pass both user and age to the view
         return view('dashboard.admin.patient.modal', compact('user', 'age', 'bookings'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -122,7 +129,6 @@ class PatientController extends Controller
     {
         $user = User::find($id);
         return view('dashboard.admin.patient.delete', compact('user'));
-
     }
 
     public function validateUpdate($request, $id)

@@ -74,7 +74,9 @@
                             @forelse($bookings as $key => $booking)
                                 <tr>
                                     <th scope="row">{{ $startingIndex + $key + 1 }}</th>
-                                    <td>{{$booking->user->name}}</td>
+                                    <td><a href="#" data-toggle="modal" data-target="#userModal{{$booking->user->id}}">
+                                            <strong>{{$booking->user->name}}</strong>
+                                        </a></td>
                                     <td>{{$booking->user->gender}}</td>
                                     <td>{{$booking->user->email}}</td>
                                     <td>{{$booking->user->phone_number}}</td>
@@ -91,6 +93,8 @@
                                         @endif
                                     </td>
                                 </tr>
+                                @include('dashboard.doctor.patient.modal')
+
                             @empty
                                 <tr>
                                     <td colspan="8">There are no appointments!</td>

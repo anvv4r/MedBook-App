@@ -8,10 +8,14 @@
         <div>
             <img src="{{asset('images')}}/{{$user->image}}" alt="{{ $user->name }}">
             <h3>{{ $user->name }}</h3>
-            <p>{{ $user->specialty }}</p>
             <p>{{ $user->gender }}, {{ $user->age }} years old</p>
-            <h4>Address:</h4>
+            <p><strong>{{ $user->education }}, {{ $user->specialty }}</strong></p>
+            <p><strong>Phone :</strong></p>
+            <p>{{ $user->phone_number }}</p>
+            <strong>Address :</strong>
             <p>{{ $user->address }}</p>
+            <strong>Professional statement :</strong>
+            <p>{{ $user->description }}</p>
 
         </div>
 
