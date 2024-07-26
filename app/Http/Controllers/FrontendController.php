@@ -15,42 +15,48 @@ class FrontendController extends Controller
      * Display a listing of the resource.
      */
 
-    public function index()
+    public function index(Request $request)
     {
-        $doctors = User::where('role_id', 2)
+        $practitioners = User::where('role_id', 2)
             ->whereHas('timeslots', function ($query) {
-                $query->where('status', 0);
-            })
-            ->latest()
-            ->take(10)
-            ->get();
+                $query->where('status', 0)
+                    ->where('date', '>=', Carbon::today());
 
-        return view('index', compact('doctors'));
-    }
-
-    public function loadmore(Request $request)
-    {
-        $search = $request->get('search');
-        $doctors = User::where('role_id', 2)
-            ->whereHas('timeslots', function ($query) {
-                $query->where('status', 0);
             })
             ->paginate(6);
 
         if ($request->ajax()) {
-            return view('partials.doctors', compact('doctors'))->render();
+            return view('partials.doctors', compact('practitioners'))->render();
         }
 
-        return view('index', compact('doctors'));
+
+        return view('index', compact('practitioners'));
+    }
+
+    public function loadmore(Request $request)
+    {
+        $practitioners = User::where('role_id', 2)
+            ->whereHas('timeslots', function ($query) {
+                $query->where('status', 0)
+                    ->where('date', '>=', Carbon::today());
+            })
+            ->paginate(6);
+
+        if ($request->ajax()) {
+            return view('partials.doctors', compact('practitioners'))->render();
+        }
+
+        return view('index', compact('practitioners'));
     }
 
     public function search(Request $request)
     {
         $search = $request->get('search');
-        $doctors = User::where('role_id', 2)
-            ->whereHas('timeslots', function ($query) {
-                $query->where('status', 0);
-            })
+        $practitioners = User::where('role_id', 2)
+            // ->whereHas('timeslots', function ($query) {
+            //     $query->where('status', 0)
+            //         ->where('date', '>=', Carbon::today());
+            // })
             ->where(function ($query) use ($search) {
                 $query->where('name', 'like', '%' . $search . '%')
                     ->orWhere('address', 'like', '%' . $search . '%')
@@ -60,10 +66,10 @@ class FrontendController extends Controller
             ->paginate(6);
 
         if ($request->ajax()) {
-            return view('partials.doctors', compact('doctors'))->render();
+            return view('partials.doctors', compact('practitioners'))->render();
         }
 
-        return view('index', compact('doctors'));
+        return view('index', compact('practitioners'));
     }
 
     /**

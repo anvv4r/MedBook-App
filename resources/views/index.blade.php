@@ -12,25 +12,25 @@
         <div class="search_result">
             <h3>Available Practitioners</h3>
             <div class="search_list">
-                @forelse($doctors as $doctor)
+                @forelse($practitioners as $practitioner)
                     <div class="search_list_item">
                         <div>
-                            <a href="{{ route('home.doctor', ['id' => $doctor->id]) }}">
-                                @if ($doctor->image == null)
-                                    <img src="{{ asset('img/user-profile.svg') }}" alt="{{ $doctor->name }}" />
+                            <a href="{{ route('home.doctor', ['id' => $practitioner->id]) }}">
+                                @if ($practitioner->image == null)
+                                    <img src="{{ asset('img/user-profile.svg') }}" alt="{{ $practitioner->name }}" />
                                 @else
-                                    <img src="{{ asset('images/' . $doctor->image) }}" alt="{{ $doctor->name }}" />
+                                    <img src="{{ asset('images/' . $practitioner->image) }}" alt="{{ $practitioner->name }}" />
 
                                 @endif
                             </a>
                         </div>
                         <div>
-                            <a href="{{ route('home.doctor', ['id' => $doctor->id]) }}">
-                                <h4>{{ $doctor->name }}</h4>
+                            <a href="{{ route('home.doctor', ['id' => $practitioner->id]) }}">
+                                <h4>{{ $practitioner->name }}</h4>
                             </a>
-                            <p>{{ $doctor->specialty }}</p>
+                            <p>{{ $practitioner->specialty }}</p>
                             <h4>Address:</h4>
-                            <p>{{ $doctor->address }}</p>
+                            <p>{{ $practitioner->address }}</p>
                         </div>
                     </div>
                 @empty

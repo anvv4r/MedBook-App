@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('dashboard');
 // });
 Route::get('/', [App\Http\Controllers\FrontendController::class, 'index'])->name('index');
-Route::get('/', [App\Http\Controllers\FrontendController::class, 'loadmore'])->name('index');
+Route::get('/loadmore', [App\Http\Controllers\FrontendController::class, 'loadmore'])->name('index');
 
 Route::get('/search', [App\Http\Controllers\FrontendController::class, 'search'])->name('search');
 Route::get('/doctor/{id}', [App\Http\Controllers\FrontendController::class, 'show'])->whereNumber('id')->name('home.doctor');

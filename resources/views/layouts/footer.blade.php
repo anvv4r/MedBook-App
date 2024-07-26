@@ -60,7 +60,7 @@
     document.getElementById("load-more").addEventListener("click", function () {
         var page = this.getAttribute("data-page");
         var button = this;
-        fetch(`/search?search={{ request('search') }}&page=` + page, {
+        fetch(`/loadmore?loadmore={{ request('index') }}&page=` + page, {
             headers: {
                 "X-Requested-With": "XMLHttpRequest",
             },
