@@ -72,14 +72,13 @@ class PatientController extends Controller
         return view('dashboard.admin.patient.modal', compact('user', 'age', 'bookings'));
     }
 
-
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function profile(string $id)
     {
         $user = User::find($id);
-        return view('dashboard.admin.patient.edit', compact('user'));
+        return view('dashboard.admin.patient.profile', compact('user'));
     }
 
     /**
@@ -91,24 +90,42 @@ class PatientController extends Controller
         $data = $request->all();
         $user = User::find($id);
         $userPassword = $user->password;
-        $imageName = $user->image;
-
-        if ($request->hasFile('image')) {
-            $imageName = (new User)->userAvatar($request);
-            unlink(public_path('images/' . $user->image));
-        }
-        $data['image'] = $imageName;
         if ($request->password) {
             $data['password'] = bcrypt($request->password);
         } else {
             $data['password'] = $userPassword;
         }
-
-        // dd($data); // Check if $data contains correct information
-
         $user->update($data);
-        return redirect()->back()->with('message', 'Patient updated successfully');
+        return redirect()->route('patient.patient-list')->with('message', 'Profile updated successfully');
+        // return redirect()->back()->with('message', 'Profile updated successfully');
     }
+
+    public function profilePic(Request $request, string $id)
+    {
+        $this->validate($request, ['file' => 'required|image|mimes:jpeg,jpg,png']);
+
+        if ($request->hasFile('file')) {
+            $image = $request->file('file');
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destination = public_path('/images');
+
+            if ($image->move($destination, $name)) {
+                $user = User::find($id);
+
+                if ($user) {
+                    $user->update(['image' => $name]);
+                    return redirect()->back()->with('message', 'Profile image updated');
+                } else {
+                    return redirect()->back()->with('error', 'User not found');
+                }
+            } else {
+                return redirect()->back()->with('error', 'Failed to upload image');
+            }
+        } else {
+            return redirect()->back()->with('error', 'No file provided');
+        }
+    }
+
     /**
      * Remove the specified resource from storage.
      */
@@ -138,9 +155,7 @@ class PatientController extends Controller
             'email' => 'required|unique:users,email,' . $id,
             'dob' => 'required',
             'gender' => 'required',
-            'address' => 'required',
             'phone_number' => 'required|numeric',
-            'image' => 'mimes:jpeg,jpg,png',
         ]);
     }
     public function patientList()

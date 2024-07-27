@@ -61,7 +61,7 @@
                 <div class="form-input">
                     <label>Date of Birth</label>
                     <input id="dob" type="date" class="form-control @error('dob') is-invalid @enderror" name="dob"
-                        value="{{ old('dob') }}" required autocomplete="dob">
+                        value="{{ old('dob') }}" required autocomplete="dob" max="{{ date('Y-m-d') }}">
                     @error('dob')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

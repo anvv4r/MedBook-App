@@ -8,8 +8,8 @@
             <div class="page-header-title">
                 <i class="ik ik-command bg-blue"></i>
                 <div class="d-inline">
-                    <h5>Doctors</h5>
-                    <span>add doctor</span>
+                    <h5>Practitioner</h5>
+                    <span>Add</span>
                 </div>
             </div>
         </div>
@@ -19,7 +19,7 @@
                     <li class="breadcrumb-item">
                         <a href="/admin/dashboard"><i class="ik ik-home"></i></a>
                     </li>
-                    <li class="breadcrumb-item"><a href="/admin/doctor">Doctor</a></li>
+                    <li class="breadcrumb-item"><a href="/admin/doctor">Practitioner</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Create</li>
                 </ol>
             </nav>
@@ -37,7 +37,7 @@
 
         <div class="card">
             <div class="card-header">
-                <h3>Add doctor</h3>
+                <h3>Add Practitioner</h3>
             </div>
             <div class="card-body">
                 <form class="forms-sample" action="{{route('doctor.store')}}" method="post"
@@ -120,7 +120,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="">Specialization</label>
+                                <label for="">Specialisation</label>
                                 <select name="specialty" class="form-control">
                                     <option value="">Please select</option>
 

@@ -24,9 +24,30 @@
                 <p class="badge badge-pill badge-dark">{{$user->name}}</p>
                 <p>{{$user->gender}}, {{$user->age}} years old.</p>
                 <p>Email: {{$user->email}}</p>
-                <p>Address: {{$user->address}}</p>
+                <p>Address:
+                    @if ($user->address == null)
+                        Not Provided
+                    @else
+                        {{$user->address}}
+                    @endif
+                </p>
                 <p>Phone number: {{$user->phone_number}}</p>
                 <p>Date of Birth: {{$user->dob}}</p>
+                <p>Education:
+                    @if ($user->education == null)
+                        Not Provided
+                    @else
+                        {{$user->education}}
+                    @endif
+                </p>
+                <p>Bio:</p>
+                <p>
+                    @if ($user->description == null)
+                        Not Provided
+                    @else
+                        {{$user->description}}
+                    @endif
+                </p>
                 <div class="modal-body">
                     <h6>Booking History</h6>
                     @foreach($users as $user)

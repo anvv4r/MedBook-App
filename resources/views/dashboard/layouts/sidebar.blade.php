@@ -22,7 +22,7 @@
                             </a>
                         @elseif(auth()->check() && auth()->user()->role?->name === 'doctor')
                             <a href="/doctor/dashboard"><i class="ik ik-bar-chart-2"></i>
-                                <span>Doctor Dashboard</span>
+                                <span>Practitioner Dashboard</span>
                             </a>
                         @elseif(auth()->check() && auth()->user()->role?->name === 'patient')
                             <a href="/patient/dashboard"><i class="ik ik-bar-chart-2"></i>
@@ -46,7 +46,7 @@
 
                     @if(auth()->check() && auth()->user()->role?->name === 'admin')
                         <div class="nav-item has-sub">
-                            <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>Doctor</span> <span
+                            <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>Practitioner</span> <span
                                     class="badge badge-danger"></span></a>
                             <div class="submenu-content">
                                 <a href="{{route('doctor.create')}}" class="menu-item">Create</a>
@@ -56,7 +56,7 @@
                             </div>
                         </div>
                         <div class="nav-item has-sub">
-                            <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>Doctor Specialisation</span>
+                            <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>Specialisation</span>
                                 <span class="badge badge-danger"></span></a>
                             <div class="submenu-content">
                                 <a href="{{route('specialty.create')}}" class="menu-item">Create</a>

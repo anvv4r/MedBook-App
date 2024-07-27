@@ -25,7 +25,6 @@ class DoctorController extends Controller
      */
     public function create()
     {
-
         $users = Auth::user();
 
         $role = Role::where('name', 'admin')->first();
@@ -80,10 +79,10 @@ class DoctorController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function profile(string $id)
     {
         $user = User::find($id);
-        return view('dashboard.admin.doctor.edit', compact('user'));
+        return view('dashboard.admin.doctor.profile', compact('user'));
     }
 
     /**
@@ -95,20 +94,40 @@ class DoctorController extends Controller
         $data = $request->all();
         $user = User::find($id);
         $userPassword = $user->password;
-        $imageName = $user->image;
-
-        if ($request->hasFile('image')) {
-            $imageName = (new User)->userAvatar($request);
-            unlink(public_path('images/' . $user->image));
-        }
-        $data['image'] = $imageName;
         if ($request->password) {
             $data['password'] = bcrypt($request->password);
         } else {
             $data['password'] = $userPassword;
         }
         $user->update($data);
-        return redirect()->route('doctor.index')->with('message', 'Doctor updated successfully');
+        // return redirect()->route('doctor.index')->with('message', 'Profile Updated Successfully');
+        return redirect()->back()->with('message', 'Profile Updated Successfully');
+    }
+
+    public function profilePic(Request $request, string $id)
+    {
+        $this->validate($request, ['file' => 'required|image|mimes:jpeg,jpg,png']);
+
+        if ($request->hasFile('file')) {
+            $image = $request->file('file');
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destination = public_path('/images');
+
+            if ($image->move($destination, $name)) {
+                $user = User::find($id);
+
+                if ($user) {
+                    $user->update(['image' => $name]);
+                    return redirect()->back()->with('message', 'Profile Image Updated Successfully');
+                } else {
+                    return redirect()->back()->with('error', 'User not found');
+                }
+            } else {
+                return redirect()->back()->with('error', 'Failed to upload image');
+            }
+        } else {
+            return redirect()->back()->with('error', 'No file provided');
+        }
     }
 
     /**
@@ -154,7 +173,6 @@ class DoctorController extends Controller
             'address' => 'required',
             'specialty' => 'required',
             'phone_number' => 'required|numeric',
-            'image' => 'mimes:jpeg,jpg,png',
             'description' => 'required'
         ]);
     }
@@ -163,7 +181,6 @@ class DoctorController extends Controller
     {
         $user = User::find($id);
         return view('dashboard.admin.doctor.delete', compact('user'));
-
     }
 
 }

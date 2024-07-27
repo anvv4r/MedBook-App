@@ -14,11 +14,12 @@ Route::middleware('can:admin')->group(function () {
     Route::get('/doctor', [App\Http\Controllers\DoctorController::class, 'index'])->name('doctor.index');
     Route::get('/doctor/create', [App\Http\Controllers\DoctorController::class, 'create'])->name('doctor.create');
     Route::post('/doctor/store', [App\Http\Controllers\DoctorController::class, 'store'])->name('doctor.store');
-    Route::get('/doctor/edit/{id}', [App\Http\Controllers\DoctorController::class, 'edit'])->name('doctor.edit');
-    Route::put('/doctor/update/{id}', [App\Http\Controllers\DoctorController::class, 'update'])->name('doctor.update');
     Route::delete('/doctor/delete/{id}', [App\Http\Controllers\DoctorController::class, 'destroy'])->name('doctor.destroy');
     Route::get('/doctor/delete/{id}', [App\Http\Controllers\DoctorController::class, 'delete'])->name('doctor.delete');
     Route::get('/doctor/show/{id}', [App\Http\Controllers\DoctorController::class, 'show'])->name('doctor.show');
+    Route::get('/doctor-edit/{id}', [App\Http\Controllers\DoctorController::class, 'profile'])->name('doctor.profile');
+    Route::post('/doctor-edit/{id}', [App\Http\Controllers\DoctorController::class, 'update'])->name('doctor.update');
+    Route::post('/doctor-pic/{id}', [App\Http\Controllers\DoctorController::class, 'profilePic'])->name('doctor.pic');
 
     Route::get('/specialty', [App\Http\Controllers\SpecialtyController::class, 'index'])->name('specialty.index');
     Route::get('/specialty/create', [App\Http\Controllers\SpecialtyController::class, 'create'])->name('specialty.create');
@@ -29,11 +30,12 @@ Route::middleware('can:admin')->group(function () {
     Route::get('/specialty/delete/{id}', [App\Http\Controllers\SpecialtyController::class, 'delete'])->name('specialty.delete');
 
     Route::get('/patient/list', [App\Http\Controllers\PatientController::class, 'patientList'])->name('patient.patient-list');
+    Route::get('/patient/show/{id}', [App\Http\Controllers\PatientController::class, 'show'])->name('patient.show');
     Route::delete('/patient/delete/{id}', [App\Http\Controllers\PatientController::class, 'destroy'])->name('patient.destroy');
     Route::get('/patient/delete/{id}', [App\Http\Controllers\PatientController::class, 'delete'])->name('patient.delete');
-    Route::get('/patient/edit/{id}', [App\Http\Controllers\PatientController::class, 'edit'])->name('patient.edit');
-    Route::get('/patient/show/{id}', [App\Http\Controllers\PatientController::class, 'show'])->name('patient.show');
-    Route::put('/patient/update/{id}', [App\Http\Controllers\PatientController::class, 'update'])->name('patient.update');
+    Route::get('/patient-edit/{id}', [App\Http\Controllers\PatientController::class, 'profile'])->name('patient.profile');
+    Route::post('/patient-edit/{id}', [App\Http\Controllers\PatientController::class, 'update'])->name('patient.update');
+    Route::post('/patient-pic/{id}', [App\Http\Controllers\PatientController::class, 'profilePic'])->name('patient.pic');
 
 });
 

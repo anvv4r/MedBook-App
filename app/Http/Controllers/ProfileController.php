@@ -13,16 +13,24 @@ class ProfileController extends Controller
     }
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'gender' => 'required',
-            'dob' => 'required',
-            'phone_number' => 'required',
-        ]);
-        User::where('id', auth()->user()->id)
-            ->update($request->except('_token'));
-        return redirect()->back()->with('message', 'profile updated');
+        $this->validateUpdate($request);
 
+        $data = $request->all();
+        $user = User::find(auth()->user()->id);
+
+        if (!$user) {
+            return redirect()->back()->with('error', 'User not found');
+        }
+
+        if ($request->password) {
+            $data['password'] = bcrypt($request->password);
+        } else {
+            $data['password'] = $user->password;
+        }
+
+        $user->update($data);
+
+        return redirect()->back()->with('message', 'Profile Info Updated Successfully');
     }
     public function profilePic(Request $request)
     {
@@ -35,9 +43,17 @@ class ProfileController extends Controller
 
             $user = User::where('id', auth()->user()->id)->update(['image' => $name]);
 
-            return redirect()->back()->with('message', 'profile updated');
+            return redirect()->back()->with('message', 'Profile Image Updated Successfully');
         }
     }
-
-
+    public function validateUpdate($request)
+    {
+        return $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|unique:users,email,' . auth()->user()->id,
+            'dob' => 'required',
+            'gender' => 'required',
+            'phone_number' => 'required|numeric',
+        ]);
+    }
 }

@@ -110,10 +110,10 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="">Specialization</label>
+                        <label for="">Specialisation</label>
                         <select name="specialty" class="form-control">
                             @foreach(App\Models\Specialty::all() as $d)
-                            <option value="{{$d->name}}" @if($user->name==$d->name)selected @endif>{{$d->name}}</option> 
+                            <option value="{{$d->name}}" @if($user->specialty==$d->name)selected @endif>{{$d->name}}</option> 
                             @endforeach
                         </select>
 

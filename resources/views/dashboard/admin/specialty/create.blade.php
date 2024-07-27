@@ -8,7 +8,7 @@
             <div class="page-header-title">
                 <i class="ik ik-command bg-blue"></i>
                 <div class="d-inline">
-                    <h5>Doctor Specialisation</h5>
+                    <h5>Practitioner Specialisation</h5>
                     <span>Add specialisation</span>
                 </div>
             </div>

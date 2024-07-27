@@ -8,7 +8,7 @@
             <div class="page-header-title">
                 <i class="ik ik-inbox bg-blue"></i>
                 <div class="d-inline">
-                    <h5>Doctor Specialisation</h5>
+                    <h5>Practitioner Specialisation</h5>
                     <span>list of all specialisation</span>
                 </div>
             </div>
@@ -39,7 +39,7 @@
         @endif
         <div class="card">
             <div class="card-header">
-                <h3>Doctor Specialisation</h3>
+                <h3>Practitioner Specialisation</h3>
 
             </div>
             <div class="card-body">

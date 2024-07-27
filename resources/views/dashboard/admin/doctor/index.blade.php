@@ -71,7 +71,7 @@
                                         <a href="#" data-toggle="modal" data-target="#exampleModal{{$user->id}}">
                                             <i class="ik ik-eye"></i>
                                         </a>
-                                        <a href="{{route('doctor.edit', [$user->id])}}"><i class="ik ik-edit-2"></i></a>
+                                        <a href="{{route('doctor.profile', [$user->id])}}"><i class="ik ik-edit-2"></i></a>
 
                                         <a href="{{route('doctor.delete', [$user->id])}}"><i class="ik ik-trash-2"></i></a>
                                     </td>

@@ -106,8 +106,9 @@
             <div class="form-row">
                 <div class="form-input">
                     <label>Date of Birth</label>
-                    <input type="date" name="dob" class="form-control @error('dob') is-invalid @enderror"
-                        value="{{old('dob')}}">
+                    <input type="date" name="dob" 
+                        class="form-control @error('dob') is-invalid @enderror" value="{{old('dob')}}"
+                        max="{{ date('Y-m-d') }}">
                     @error('dob')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -140,5 +141,6 @@
         </form>
     </div>
 </div>
+
 
 @endsection
