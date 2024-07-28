@@ -78,7 +78,7 @@
             </div>
             <div class="form-row">
                 <div class="form-input">
-                    <label>Specialization</label>
+                    <label>Specialisation</label>
                     <select name="specialty" class="form-control">
                         <option value="">Please select</option>
                         @foreach(App\Models\Specialty::all() as $d)
