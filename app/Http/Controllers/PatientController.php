@@ -30,15 +30,16 @@ class PatientController extends Controller
         }
 
         // Retrieve only bookings that belong to the logged-in doctor
-        $bookings = Booking::with('user') // Eager load the user relationship
-            ->where('doctor_id', $doctorId)
-            ->paginate(10);
+        // $bookings = Booking::with('user') // Eager load the user relationship
+        //     ->where('doctor_id', $doctorId)
+        //     ->paginate(10);
+
+        $bookings = Booking::where('doctor_id', auth()->user()->id)->with('user')->paginate(10);
 
         $users = User::where('role_id', 3)->get();
 
         return view('dashboard.doctor.patient.booking-list', compact('bookings', 'users'));
     }
-
     /**
      * Updating Booking status.
      */
@@ -66,10 +67,14 @@ class PatientController extends Controller
             // Handle the error, e.g., return an error message or redirect.
             return redirect()->back()->withErrors('User not found or date of birth not set.');
         }
-        $bookings = Booking::where('user_id', $id)->get();
+        $bookings = Booking::where('user_id', $id)
+            ->where('doctor_id', auth()->user()->id)
+            ->get();
+
+        $users = User::where('role_id', 3)->get();
 
         // Pass both user and age to the view
-        return view('dashboard.admin.patient.modal', compact('user', 'age', 'bookings'));
+        return view('dashboard.doctor.patient.show', compact('user', 'age', 'bookings', 'users'));
     }
 
     /**

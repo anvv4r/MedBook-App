@@ -13,12 +13,12 @@
                         width="200" style="border: 2px solid #eee; border-radius: 10px;"></p>
                 <p class="badge badge-pill badge-dark">{{$user->name}}</p>
                 <p>{{$user->gender}}, {{$user->age}} years old.</p>
+                <p>{{$user->education}}, {{$user->specialty}}</p>
                 <p>Email: {{$user->email}}</p>
-                <p>Address: {{$user->address}}</p>
                 <p>Phone number: {{$user->phone_number}}</p>
-                <p>Specialization: {{$user->specialty}}</p>
-                <p>Education: {{$user->education}}</p>
-                <p>About: {{$user->description}}</p>
+                <p>Address: {{$user->address}}</p>
+                <p>Professional Statement:</p>
+                <p>{{$user->description}}</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>

@@ -71,35 +71,38 @@
                                 $currentPage = $bookings->currentPage();
                                 $startingIndex = ($currentPage - 1) * $perPage;
                             @endphp
-                            @forelse($bookings as $key => $booking)
-                                <tr>
-                                    <th scope="row">{{ $startingIndex + $key + 1 }}</th>
-                                    <td><a href="#" data-toggle="modal" data-target="#userModal{{$booking->user->id}}">
-                                            <strong>{{$booking->user->name}}</strong>
-                                        </a></td>
-                                    <td>{{$booking->user->gender}}</td>
-                                    <td>{{$booking->user->email}}</td>
-                                    <td>{{$booking->user->phone_number}}</td>
-                                    <td>{{$booking->date}}</td>
-                                    <td>{{$booking->time}}</td>
-                                    <td>
-                                        @if($booking->status == 0)
-                                            <a href="{{route('update.status', [$booking->id])}}"><button
-                                                    class="btn btn-primary">Pending</button></a>
-                                        @else 
+                            @if (count($bookings) > 0)
+                                @foreach($bookings as $key => $booking)
+                                    <tr>
+                                        <th scope="row">{{ $startingIndex + $key + 1 }}</th>
+                                        <td><a href="/doctor/patient/show/{{$booking->user->id}}">
+                                                <strong>{{$booking->user->name}}</strong>
+                                            </a></td>
+                                        <td>{{$booking->user->gender}}</td>
+                                        <td>{{$booking->user->email}}</td>
+                                        <td>{{$booking->user->phone_number}}</td>
+                                        <td>{{$booking->date}}</td>
+                                        <td>{{$booking->time}}</td>
+                                        <td>
+                                            @if($booking->status == 0)
+                                                <a href="{{route('update.status', [$booking->id])}}"><button
+                                                        class="btn btn-primary">Pending</button></a>
+                                            @else
 
-                                            <a href="{{route('update.status', [$booking->id])}}"><button
-                                                    class="btn btn-danger">Checked</button></a>
-                                        @endif
-                                    </td>
-                                </tr>
-                                @include('dashboard.doctor.patient.modal')
+                                                <a href="{{route('update.status', [$booking->id])}}"><button
+                                                        class="btn btn-danger">Checked</button></a>
+                                            @endif
+                                        </td>
+                                    </tr>
 
-                            @empty
+                                @endforeach
+
+                            @else
                                 <tr>
                                     <td colspan="8">There are no appointments!</td>
                                 </tr>
-                            @endforelse
+                            @endif
+
                         </tbody>
                         <tfoot>
                             <tr>
@@ -112,4 +115,6 @@
         </div>
     </div>
 </div>
+
+
 @endsection

@@ -106,9 +106,8 @@
             <div class="form-row">
                 <div class="form-input">
                     <label>Date of Birth</label>
-                    <input type="date" name="dob" 
-                        class="form-control @error('dob') is-invalid @enderror" value="{{old('dob')}}"
-                        max="{{ date('Y-m-d') }}">
+                    <input type="date" name="dob" class="form-control @error('dob') is-invalid @enderror"
+                        value="{{old('dob')}}" max="{{ date('Y-m-d') }}">
                     @error('dob')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -128,7 +127,7 @@
                 </div>
             </div>
             <div class="form-textarea">
-                <label>Bio</label>
+                <label>Professional Statement</label>
                 <textarea class="form-control @error('description') is-invalid @enderror" id="exampleTextarea1" rows="4"
                     name="description">{{old('description')}}</textarea>
                 @error('description')
@@ -141,6 +140,5 @@
         </form>
     </div>
 </div>
-
 
 @endsection

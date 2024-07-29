@@ -12,61 +12,62 @@
 
                 <p>
                     @if ($user->image == null)
-                        <img src="{{ asset('img') }}/user-profile.svg" class="table-user-thumb" alt="{{ $user->name }}"
-                            width="200" style="border: 2px solid #eee; border-radius: 10px;">
+                    <img src="{{ asset('img') }}/user-profile.svg" class="table-user-thumb" alt="{{ $user->name }}"
+                        width="200" style="border: 2px solid #eee; border-radius: 10px;">
                     @else
-                        <img src="{{asset('images')}}/{{$user->image}}" class="table-user-thumb" alt="{{$user->name}}"
-                            width="200" style="border: 2px solid #eee; border-radius: 10px;">
+                    <img src="{{asset('images')}}/{{$user->image}}" class="table-user-thumb" alt="{{$user->name}}"
+                        width="200" style="border: 2px solid #eee; border-radius: 10px;">
                     @endif
 
 
                 </p>
                 <p class="badge badge-pill badge-dark">{{$user->name}}</p>
                 <p>{{$user->gender}}, {{$user->age}} years old.</p>
+                <p>Date of Birth: {{$user->dob}}</p>
                 <p>Email: {{$user->email}}</p>
+                <p>Phone number: {{$user->phone_number}}</p>
                 <p>Address:
                     @if ($user->address == null)
-                        Not Provided
+                    Not Provided
                     @else
-                        {{$user->address}}
+                    {{$user->address}}
                     @endif
                 </p>
-                <p>Phone number: {{$user->phone_number}}</p>
-                <p>Date of Birth: {{$user->dob}}</p>
                 <p>Education:
                     @if ($user->education == null)
-                        Not Provided
+                    Not Provided
                     @else
-                        {{$user->education}}
+                    {{$user->education}}
                     @endif
                 </p>
                 <p>Bio:</p>
                 <p>
                     @if ($user->description == null)
-                        Not Provided
+                    Not Provided
                     @else
-                        {{$user->description}}
+                    {{$user->description}}
                     @endif
                 </p>
                 <div class="modal-body">
                     <h6>Booking History</h6>
                     @foreach($users as $user)
-                        @if($user->bookings->isEmpty())
-                            <p>No bookings found for this patient.</p>
-                        @else
-                            <div class="list-group">
-                                @foreach($user->bookings->where('status', 1) as $booking)
-                                    <div class="list-group-item">
-                                        <div>Doctor: {{ $booking->doctor->name }}</div>
-                                        <div>Booking Date: {{ $booking->date }}</div>
-                                        <div>Booking Time: {{ $booking->time }}</div>
-                                    </div>
-                                @endforeach
-                            </div>
-                        @endif
+                    @if($user->bookings->isEmpty())
+                    <p>No bookings found for this patient.</p>
+                    @else
+                    <div class="list-group">
+                        @foreach($user->bookings->where('status', 1) as $booking)
+                        <div class="list-group-item">
+                            <div>Doctor: {{ $booking->doctor->name }}</div>
+                            <div>Booking Date: {{ $booking->date }}</div>
+                            <div>Booking Time: {{ $booking->time }}</div>
+                        </div>
+                        @endforeach
+                    </div>
+                    @endif
                     @endforeach
                 </div>
             </div>
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
 

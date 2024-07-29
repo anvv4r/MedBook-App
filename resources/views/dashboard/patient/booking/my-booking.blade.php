@@ -16,9 +16,9 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Doctor</th>
-                                <th scope="col">Booking Time</th>
                                 <th scope="col">Booking Date</th>
-                                <th scope="col">Created Date</th>
+                                <th scope="col">Booking Time</th>
+                                <!-- <th scope="col">Created Date</th> -->
                                 <th scope="col">Status</th>
                             </tr>
                         </thead>
@@ -32,13 +32,13 @@
                                 <tr>
                                     <th scope="row">{{ $startingIndex + $key + 1 }}</th>
                                     <td>{{$booking->doctor->name}}</td>
-                                    <td>{{$booking->time}}</td>
                                     <td>{{$booking->date}}</td>
-                                    <td>{{$booking->created_at}}</td>
+                                    <td>{{$booking->time}}</td>
+                                    <!-- <td>{{$booking->created_at}}</td> -->
                                     <td>
                                         @if($booking->status == 0)
                                             <button class="btn btn-primary">Not visited</button>
-                                        @else 
+                                        @else
 
                                             <button class="btn btn-danger">Visited</button>
                                         @endif
