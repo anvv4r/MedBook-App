@@ -14,22 +14,18 @@ class FrontendController extends Controller
     /**
      * Display a listing of the resource.
      */
-
     public function index(Request $request)
     {
         $practitioners = User::where('role_id', 2)
             ->whereHas('timeslots', function ($query) {
                 $query->where('status', 0)
                     ->where('date', '>=', Carbon::today());
-
             })
             ->paginate(6);
 
         if ($request->ajax()) {
             return view('partials.doctors', compact('practitioners'))->render();
         }
-
-
         return view('index', compact('practitioners'));
     }
 
@@ -45,7 +41,6 @@ class FrontendController extends Controller
         if ($request->ajax()) {
             return view('partials.doctors', compact('practitioners'))->render();
         }
-
         return view('index', compact('practitioners'));
     }
 
@@ -53,25 +48,20 @@ class FrontendController extends Controller
     {
         $search = $request->get('search');
         $practitioners = User::where('role_id', 2)
-            // ->whereHas('timeslots', function ($query) {
-            //     $query->where('status', 0)
-            //         ->where('date', '>=', Carbon::today());
-            // })
             ->where(function ($query) use ($search) {
                 $query->where('name', 'like', '%' . $search . '%')
                     ->orWhere('address', 'like', '%' . $search . '%')
                     ->orWhere('education', 'like', '%' . $search . '%')
-                    ->orWhere('specialty', 'like', '%' . $search . '%');
+                    ->orWhere('specialty', 'like', '%' . $search . '%')
+                    ->orWhere('description', 'like', '%' . $search . '%');
             })
             ->paginate(6);
 
         if ($request->ajax()) {
             return view('partials.doctors', compact('practitioners'))->render();
         }
-
         return view('index', compact('practitioners'));
     }
-
     /**
      * Display the specified resource.
      */
@@ -85,7 +75,6 @@ class FrontendController extends Controller
             $age = $now->diff($dob)->y;
         } else {
             $age = null;
-            // Handle the error, e.g., return an error message or redirect.
             return redirect()->back()->withErrors('User not found.');
         }
 
@@ -98,8 +87,6 @@ class FrontendController extends Controller
         $doctorId = $id;
         $doctor = User::find($id);
 
-        // Pass the user, age, and appointments to the view
         return view('booking.doctor', compact('user', 'age', 'appointments', 'doctor', 'doctorId'));
     }
-
 }

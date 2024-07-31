@@ -2,17 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// });
 Route::get('/', [App\Http\Controllers\FrontendController::class, 'index'])->name('index');
 Route::get('/loadmore', [App\Http\Controllers\FrontendController::class, 'loadmore'])->name('index');
 
 Route::get('/search', [App\Http\Controllers\FrontendController::class, 'search'])->name('search');
 Route::get('/doctor/{id}', [App\Http\Controllers\FrontendController::class, 'show'])->whereNumber('id')->name('home.doctor');
+Route::get('/booking/{id}/{date}', [App\Http\Controllers\BookingController::class, 'index'])->name('booking.index');
+
 Route::get('/register-doctor', [App\Http\Controllers\DocRegController::class, 'index'])->name('index');
 Route::post('/register-doctor', [App\Http\Controllers\DocRegController::class, 'storeDoctor'])->name('auth.register-doctor');
-
 
 // route for all login user
 // Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'dashboard'])->name('dashboard');
@@ -21,11 +19,9 @@ Route::post('/register-doctor', [App\Http\Controllers\DocRegController::class, '
 // Route::post('/profile-pic', [App\Http\Controllers\ProfileController::class, 'profilePic'])->name('profile.pic');
 
 // patient route
-// Route::get('/booking/{id}/{date}', [App\Http\Controllers\BookingController::class, 'index'])->name('booking.index');
 // Route::post('/booking/confirm', [App\Http\Controllers\BookingController::class, 'confirm'])->name('booking.confirm');
 // Route::post('/booking/store', [App\Http\Controllers\BookingController::class, 'store'])->name('booking.store');
 // Route::get('/my-booking', [App\Http\Controllers\BookingController::class, 'myBookings'])->name('my-booking');
-
 
 // doctor routes
 // Route::get('/time', [App\Http\Controllers\TimeSlotController::class, 'index'])->name('time.index');
@@ -37,7 +33,6 @@ Route::post('/register-doctor', [App\Http\Controllers\DocRegController::class, '
 // Route::get('/patient', [App\Http\Controllers\PatientController::class, 'bookingList'])->name('patient.booking-list');
 // Route::post('/patient', [App\Http\Controllers\PatientController::class, 'bookingList'])->name('patient.booking-list');
 // Route::get('/status/update/{id}', [App\Http\Controllers\PatientController::class, 'toggleStatus'])->name('update.status');
-
 
 //admin routes
 // Route::get('/doctor', [App\Http\Controllers\DoctorController::class, 'index'])->name('doctor.index');

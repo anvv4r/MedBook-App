@@ -20,7 +20,7 @@ class BookingController extends Controller
         $user = Auth::user();
 
         if (!$user) {
-            return redirect()->route('login')->with('error', 'Please login to make an appointment!');
+            return redirect()->route('home.doctor', ['id' => $id])->with('error', 'Please register / login as a Patient to make an appointment!');
         }
 
         $times = TimeSlot::where('status', 0)
@@ -33,9 +33,7 @@ class BookingController extends Controller
             ->get();
 
         $appointment = $appointments->first();
-
         $doctorName = User::where('id', $id)->first()->name;
-
         $doctorId = $id;
 
         return view('booking.index', compact('user', 'times', 'appointments', 'appointment', 'doctorName', 'date', 'id', 'doctorId'));
@@ -45,29 +43,53 @@ class BookingController extends Controller
      */
     public function confirm(Request $request)
     {
-        // dd($request->all()); // This will dump all request data
-
-        // Validate the request data if needed
+        // Validate the request data
         $validated = $request->validate([
-            'doctor_id' => 'required',
-            'date' => 'required',
+            'doctor_id' => 'required|exists:users,id',
+            'date' => 'required|date',
             'time' => 'required'
         ]);
 
-        // $check = $this->checkBookingStatus();
-        // if ($check) {
-        //     return redirect()->back()->with('message', 'You have already booked an appointment. Please wait to make next appointment');
-        // }
+        // Check for pending appointments
+        if ($this->checkBookingStatus($request)) {
+            return redirect()->back()->with('message', 'You still have a pending appointment for this practitioner. Please wait to make the next appointment.');
+        }
+
+        // Check for existing appointments at the same date and time
+        if ($this->checkBookingDateTimeStatus($request)) {
+            return redirect()->back()->with('message', 'You already have an appointment for this date and time. Please select another date and time.');
+        }
 
         // Get the booking data
-        $doctorId = $request->doctor_id;
         $bookingData = $request->all();
         $doctorId = $bookingData['doctor_id'];
-        $doctorData = User::where('id', $doctorId)->first();
+        $doctorData = User::find($doctorId);
         $user = Auth::user();
 
         // Pass the booking data to the confirmation view
         return view('booking.confirm', compact('bookingData', 'doctorData', 'user', 'doctorId'));
+    }
+
+    public function checkBookingStatus(Request $request)
+    {
+        $doctorId = $request->input('doctor_id');
+        return Booking::orderby('id', 'desc')
+            ->where('user_id', auth()->user()->id)
+            ->where('doctor_id', $doctorId)
+            ->where('status', 0)
+            ->exists();
+    }
+
+    public function checkBookingDateTimeStatus(Request $request)
+    {
+        $date = $request->input('date');
+        $time = $request->input('time');
+        return Booking::orderby('id', 'desc')
+            ->where('user_id', auth()->user()->id)
+            ->where('date', $date)
+            ->where('time', $time)
+            ->where('status', 0)
+            ->exists();
     }
     /**
      * Store a newly created resource in storage.
@@ -116,15 +138,6 @@ class BookingController extends Controller
         // }
 
         return redirect()->route('home.doctor', ['id' => $doctorId])->with('success', 'Appointment booked successfully!');
-    }
-
-    public function checkBookingStatus()
-    {
-        return Booking::orderby('id', 'desc')
-            ->where('user_id', auth()->user()->id)
-            ->where('status', 0)
-            // ->whereDate('created_at', date('Y-m-d'))
-            ->exists();
     }
     /**
      * Display the specified resource.

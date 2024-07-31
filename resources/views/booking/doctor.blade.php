@@ -2,6 +2,16 @@
 
 @section('content')
 
+@if(session('success'))
+<div class="alert-success">
+    {{ session('success') }}
+</div>
+@elseif(session('error'))
+<div class="alert-danger">
+    {{ session('error') }}
+</div>
+@endif
+
 <div class="container">
     <h3>Practitioner Details</h3>
     <div class="container_detail">
@@ -21,26 +31,17 @@
             <h3>Available Dates</h3>
             <ul>
                 @forelse($appointments as $appointment)
-                    @if($appointment->date != \Carbon\Carbon::today()->toDateString())
-                        <li>{{ $appointment->date }} &nbsp;&nbsp;<a class="book_button"
-                                href="{{ route('booking.index', ['id' => $doctorId, 'date' => $appointment->date]) }}">Make
-                                Appointment</a></li>
-                    @endif
+                @if($appointment->date != \Carbon\Carbon::today()->toDateString())
+                <li>{{ $appointment->date }} &nbsp;&nbsp;<a class="book_button"
+                        href="{{ route('booking.index', ['id' => $doctorId, 'date' => $appointment->date]) }}">Make
+                        Appointment</a></li>
+                @endif
                 @empty
-                    <li>No available dates.</li>
+                <li>No available dates.</li>
                 @endforelse
             </ul>
         </div>
     </div>
-    @if(session('success'))
-        <div class="alert-success">
-            {{ session('success') }}
-        </div>
-    @elseif(session('error'))
-        <div class="alert-danger">
-            {{ session('error') }}
-        </div>
-    @endif
 </div>
 
 @endsection

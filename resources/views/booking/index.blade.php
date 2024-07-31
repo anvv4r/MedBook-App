@@ -1,6 +1,18 @@
 @extends('layouts.master')
 
 @section('content')
+
+@if(Session::has('message'))
+<div class="alert-success">
+    {{Session::get('message')}}
+</div>
+@endif
+@if(Session::has('errmessage'))
+<div class="alert-danger">
+    {{Session::get('errmessage')}}
+</div>
+@endif
+
 <div class="container">
     <h3>Make Appointment for : {{ $user->name }}</h3>
     <div class="booking_detail">
@@ -18,23 +30,13 @@
                 <label for="time">Select Time : </label>
                 <select name="time" id="time">
                     @foreach ($times as $time)
-                        <option value="{{ $time->time }}">{{ $time->time }}</option>
+                    <option value="{{ $time->time }}">{{ $time->time }}</option>
                     @endforeach
                 </select>
                 <button class="book_button" type="submit">Book</button>
             </form>
         </div>
     </div>
-
-    @if(Session::has('message'))
-        <div class="alert-success">
-            {{Session::get('message')}}
-        </div>
-    @endif
-    @if(Session::has('errmessage'))
-        <div class="alert-danger">
-            {{Session::get('errmessage')}}
-        </div>
-    @endif
 </div>
+
 @endsection
