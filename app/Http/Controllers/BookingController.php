@@ -66,10 +66,8 @@ class BookingController extends Controller
         $doctorData = User::find($doctorId);
         $user = Auth::user();
 
-        // Pass the booking data to the confirmation view
         return view('booking.confirm', compact('bookingData', 'doctorData', 'user', 'doctorId'));
     }
-
     public function checkBookingStatus(Request $request)
     {
         $doctorId = $request->input('doctor_id');
@@ -79,7 +77,6 @@ class BookingController extends Controller
             ->where('status', 0)
             ->exists();
     }
-
     public function checkBookingDateTimeStatus(Request $request)
     {
         $date = $request->input('date');
@@ -148,30 +145,6 @@ class BookingController extends Controller
             ->where('user_id', auth()->user()->id)
             ->paginate(10);
 
-
         return view('dashboard.patient.booking.my-booking', compact('bookings'));
-    }
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }
