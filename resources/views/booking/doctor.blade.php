@@ -16,9 +16,7 @@
             <p>{{ $user->address }}</p>
             <strong>Professional statement :</strong>
             <p>{{ $user->description }}</p>
-
         </div>
-
         <div>
             <h3>Available Dates</h3>
             <ul>
@@ -29,7 +27,7 @@
                                 Appointment</a></li>
                     @endif
                 @empty
-                    <li>No available dates</li>
+                    <li>No available dates.</li>
                 @endforelse
             </ul>
         </div>

@@ -17,7 +17,7 @@
             <nav class="breadcrumb-container" aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href="/dashboard"><i class="ik ik-home"></i></a>
+                        <a href="/doctor/dashboard"><i class="ik ik-home"></i></a>
                     </li>
                     <li class="breadcrumb-item"><a href="/doctor/time">Time Slot</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Create</li>

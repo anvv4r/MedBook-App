@@ -74,11 +74,16 @@
                     </p>
                     <div class="card-body">
                         <h6>Booking History</h6>
-                        @foreach($users as $user)
                         @php
-                        $doctorBookings = $user->bookings->where('doctor_id', auth()->user()->id)->where('status', 1);
+                        $doctorBookings = collect();
+                        foreach($users as $user) {
+                        $doctorBookings = $doctorBookings->merge($user->bookings->where('doctor_id',
+                        auth()->user()->id)->where('status', 1));
+                        }
                         @endphp
+
                         @if($doctorBookings->isEmpty())
+                        <div class="alert alert-warning">No booking history found.</div>
                         @else
                         <div class="list-group">
                             @foreach($doctorBookings as $booking)
@@ -89,7 +94,6 @@
                             @endforeach
                         </div>
                         @endif
-                        @endforeach
                     </div>
                     <a href="{{route('patient.booking-list')}}" class="btn btn-primary">Close</a>
                 </div>

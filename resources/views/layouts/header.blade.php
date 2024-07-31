@@ -24,37 +24,37 @@
                 <span class="hamburger"></span>
             </button>
             @if (Route::has('login'))
-                @auth
-                    @if(auth()->check() && auth()->user()->role?->name === 'admin')
+            @auth
+            @if(auth()->check() && auth()->user()->role?->name === 'admin')
 
-                        <a href="/admin/dashboard">
-                            <h3>Admin Dashboard</h3>
-                        </a>
-                    @elseif(auth()->check() && auth()->user()->role?->name === 'doctor')
-                        <a href="/doctor/dashboard">
-                            <h3>Doctor Dashboard</h3>
-                        </a>
-                    @elseif(auth()->check() && auth()->user()->role?->name === 'patient')
-                        <a href="/patient/dashboard">
-                            <h3>Patient Dashboard</h3>
-                        </a>
-                    @endif
-                    </a>
-                    <a href="{{ route('logout') }}"
-                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        <h3>Logout</h3>
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                @else
-                    <a href="/register-doctor">
-                        <h3>List your practice</h3>
-                    </a>
-                    <a href="/login">
-                        <h3>Login/Sign up</h3>
-                    </a>
-                @endauth
+            <a href="/admin/dashboard">
+                <h3>Admin Dashboard</h3>
+            </a>
+            @elseif(auth()->check() && auth()->user()->role?->name === 'doctor')
+            <a href="/doctor/dashboard">
+                <h3>Practitioner Dashboard</h3>
+            </a>
+            @elseif(auth()->check() && auth()->user()->role?->name === 'patient')
+            <a href="/patient/dashboard">
+                <h3>Patient Dashboard</h3>
+            </a>
+            @endif
+            </a>
+            <a href="{{ route('logout') }}"
+                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                <h3>Logout</h3>
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+            @else
+            <a href="/register-doctor">
+                <h3>List your practice</h3>
+            </a>
+            <a href="/login">
+                <h3>Login/Sign up</h3>
+            </a>
+            @endauth
             @endif
             <a href="#story">
                 <h3>Our Story</h3>

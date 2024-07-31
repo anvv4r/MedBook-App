@@ -5,13 +5,11 @@
 <div class="page-header">
     <div class="row align-items-end">
         <div class="col-lg-8">
-
             <div class="page-header-title">
                 <i class="ik ik-command bg-blue"></i>
                 <div class="d-inline">
                     <h5>Time Slot</h5>
                     <span>List</span>
-
                 </div>
             </div>
         </div>
@@ -28,7 +26,6 @@
         </div>
     </div>
 </div>
-
 <div class="container">
     @if(Session::has('message'))
         <div class="alert bg-success alert-success text-white" role="alert">
@@ -43,9 +40,7 @@
     @foreach($errors->all() as $error)
         <div class="alert alert-danger">
             {{$error}}
-
         </div>
-
     @endforeach
     <div class="card">
         <div class="card-header">
@@ -58,7 +53,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Doctor Name</th>
                         <th scope="col">Date</th>
-                        <th scope="col">Action</th>
+                        <th scope="col" colspan="2" class="text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -77,6 +72,14 @@
                                         <input type="hidden" name="date" value="{{$date}}">
                                         <button type="submit" class="btn btn-primary">Show/Update</button>
                                     </form>
+                                <td>
+                                    <form action="{{ route('time.destroy', ['date' => $date]) }}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-danger"
+                                            onclick="return confirm('Are you sure you want to delete this time slots?');">Delete</button>
+                                    </form>
+                                </td>
                                 </td>
                             </tr>
                         @endforeach
@@ -90,7 +93,6 @@
 <style type="text/css">
     input[type="checkbox"] {
         zoom: 1.5;
-
     }
 
     body {

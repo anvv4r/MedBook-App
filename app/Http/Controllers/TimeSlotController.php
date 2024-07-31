@@ -19,13 +19,13 @@ class TimeSlotController extends Controller
         $loggedInUserId = Auth::id();
 
         $users = User::all();
-        $doctor = User::where('id', auth()->user()->id)->first();
+        $doctor = User::where('id', $loggedInUserId)->first();
 
-        $timeslots = TimeSlot::latest()->where('doc_id', auth()->user()->id)->get();
+        $timeslots = TimeSlot::latest()->where('doc_id', $loggedInUserId)->get();
 
         // Selecting unique dates for the authenticated doctor's time slots
         $uniqueDates = TimeSlot::select('date')
-            ->where('doc_id', auth()->user()->id)
+            ->where('doc_id', $loggedInUserId)
             ->groupBy('date')
             ->pluck('date');
 
@@ -93,10 +93,9 @@ class TimeSlotController extends Controller
      */
     public function update(Request $request, $date)
     {
-        // Assuming $date is passed as a parameter to uniquely identify the time slots to update
         $this->validate($request, [
             'time' => 'required|array',
-            'time.*' => 'required' // Ensuring each time value in the array is required
+            'time.*' => 'required'
         ]);
 
         // dd($request->all());
@@ -120,8 +119,12 @@ class TimeSlotController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $date)
     {
-        //
+        TimeSlot::where('date', $date)
+            ->where('doc_id', auth()->user()->id)
+            ->delete();
+
+        return redirect()->back()->with('message', 'Time Slot deleted successfully');
     }
 }

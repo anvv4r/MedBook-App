@@ -15,6 +15,7 @@ Route::middleware('can:doctor')->group(function () {
     Route::post('/time/store', [App\Http\Controllers\TimeSlotController::class, 'store'])->name('time.store');
     Route::get('/time/show/{date}', [App\Http\Controllers\TimeSlotController::class, 'show'])->name('time.show');
     Route::post('/time/update/{date}', [App\Http\Controllers\TimeSlotController::class, 'update'])->name('time.update');
+    Route::delete('/time/delete/{date}', [App\Http\Controllers\TimeSlotController::class, 'destroy'])->name('time.destroy');
 
     Route::get('/patient', [App\Http\Controllers\PatientController::class, 'bookingList'])->name('patient.booking-list');
     Route::post('/patient', [App\Http\Controllers\PatientController::class, 'bookingList'])->name('patient.booking-list');
