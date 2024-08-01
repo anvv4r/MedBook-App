@@ -20,6 +20,6 @@
     </div>
 @empty
     <div class="search_list">
-        <p>No available practitioner found.</p>
+        <p>No more available practitioner found.</p>
     </div>
 @endforelse
