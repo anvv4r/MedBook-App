@@ -16,26 +16,19 @@ class PatientController extends Controller
     public function bookingList(Request $request)
     {
 
-        $doctorId = auth()->id(); // Get the logged-in doctor's ID
+        $doctorId = auth()->id();
 
         // filter bookings by date
         if ($request->date) {
             $bookings = Booking::latest()->where('date', $request->date)
                 ->where('doctor_id', $doctorId)
                 ->paginate(10);
-
             $users = User::where('role_id', 3)->get();
 
             return view('dashboard.doctor.patient.booking-list', compact('bookings', 'users'));
         }
 
-        // Retrieve only bookings that belong to the logged-in doctor
-        // $bookings = Booking::with('user') // Eager load the user relationship
-        //     ->where('doctor_id', $doctorId)
-        //     ->paginate(10);
-
         $bookings = Booking::where('doctor_id', auth()->user()->id)->with('user')->paginate(10);
-
         $users = User::where('role_id', 3)->get();
 
         return view('dashboard.doctor.patient.booking-list', compact('bookings', 'users'));
@@ -51,7 +44,6 @@ class PatientController extends Controller
 
         return redirect()->back();
     }
-
     /**
      * Display the specified resource.
      */
@@ -64,28 +56,25 @@ class PatientController extends Controller
             $age = $now->diff($dob)->y;
         } else {
             $age = null;
-            // Handle the error, e.g., return an error message or redirect.
+
             return redirect()->back()->withErrors('User not found or date of birth not set.');
         }
-        $bookings = Booking::where('user_id', $id)
+        $doctorBookings = Booking::where('user_id', $id)
             ->where('doctor_id', auth()->user()->id)
+            ->where('status', 1)
             ->get();
 
-        $users = User::where('role_id', 3)->get();
-
-        // Pass both user and age to the view
-        return view('dashboard.doctor.patient.show', compact('user', 'age', 'bookings', 'users'));
+        return view('dashboard.doctor.patient.show', compact('user', 'age', 'doctorBookings'));
     }
-
     /**
      * Show the form for editing the specified resource.
      */
     public function profile(string $id)
     {
         $user = User::find($id);
+
         return view('dashboard.admin.patient.profile', compact('user'));
     }
-
     /**
      * Update the specified resource in storage.
      */
@@ -101,6 +90,7 @@ class PatientController extends Controller
             $data['password'] = $userPassword;
         }
         $user->update($data);
+
         return redirect()->route('patient.patient-list')->with('message', 'Profile updated successfully');
         // return redirect()->back()->with('message', 'Profile updated successfully');
     }
@@ -130,7 +120,6 @@ class PatientController extends Controller
             return redirect()->back()->with('error', 'No file provided');
         }
     }
-
     /**
      * Remove the specified resource from storage.
      */
@@ -166,7 +155,23 @@ class PatientController extends Controller
     public function patientList()
     {
         $users = User::where('role_id', 3)->get();
-
         return view('dashboard.admin.patient.patient-list', compact('users'));
+    }
+    public function detail(string $id)
+    {
+        $user = User::find($id);
+        if ($user && $user->dob) {
+            $dob = new DateTime($user->dob);
+            $now = new DateTime();
+            $age = $now->diff($dob)->y;
+        } else {
+            $age = null;
+            return redirect()->back()->withErrors('User not found or date of birth not set.');
+        }
+        $bookings = Booking::where('user_id', $id)
+            ->where('status', 1)
+            ->get();
+
+        return view('dashboard.admin.patient.detail', compact('user', 'age', 'bookings'));
     }
 }

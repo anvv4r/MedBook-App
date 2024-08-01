@@ -77,21 +77,19 @@
                                     <td class="wrap-text">{{$user->gender}}</td>
                                     <td class="wrap-text">{{$user->dob}}</td>
                                     <td class="wrap-text">
-                                        <a href="#" data-toggle="modal" data-target="#userModal{{$user->id}}">
+                                        <a href="{{route('patient.detail', [$user->id])}}">
                                             <i class="ik ik-eye"></i>
                                         </a>
-
                                         <a href="{{route('patient.profile', [$user->id])}}"><i class="ik ik-edit-2"></i></a>
                                         <a href="{{route('patient.delete', [$user->id])}}"><i class="ik ik-trash-2"></i></a>
                                     </td>
                                     <td>&nbsp;</td>
 
                                 </tr>
-                                @include('dashboard.admin.patient.modal')
 
                             @endforeach
 
-                        @else 
+                        @else
                             <td>No Patient to display</td>
                         @endif
 

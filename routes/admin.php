@@ -30,12 +30,10 @@ Route::middleware('can:admin')->group(function () {
     Route::get('/specialty/delete/{id}', [App\Http\Controllers\SpecialtyController::class, 'delete'])->name('specialty.delete');
 
     Route::get('/patient/list', [App\Http\Controllers\PatientController::class, 'patientList'])->name('patient.patient-list');
-    Route::get('/patient/show/{id}', [App\Http\Controllers\PatientController::class, 'show'])->name('patient.show');
+    Route::get('/patient/detail/{id}', [App\Http\Controllers\PatientController::class, 'detail'])->name('patient.detail');
     Route::delete('/patient/delete/{id}', [App\Http\Controllers\PatientController::class, 'destroy'])->name('patient.destroy');
     Route::get('/patient/delete/{id}', [App\Http\Controllers\PatientController::class, 'delete'])->name('patient.delete');
     Route::get('/patient-edit/{id}', [App\Http\Controllers\PatientController::class, 'profile'])->name('patient.profile');
     Route::post('/patient-edit/{id}', [App\Http\Controllers\PatientController::class, 'update'])->name('patient.update');
     Route::post('/patient-pic/{id}', [App\Http\Controllers\PatientController::class, 'profilePic'])->name('patient.pic');
-
 });
-
