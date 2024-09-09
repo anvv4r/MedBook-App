@@ -5,7 +5,7 @@
                 Book your favourite health professional faster with the
                 MedBook app
             </h2>
-            <p>Available on the App Store and Google Play.</p>
+            <p>Available on the App Store and Play Store.</p>
             <button>Download Now</button>
         </div>
         <img src="{{ asset('img/medbook-logo.svg')}}" alt="MedBook" />

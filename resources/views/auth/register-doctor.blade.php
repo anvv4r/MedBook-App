@@ -13,9 +13,9 @@
                     <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
                         placeholder="Full Name" value="{{old('name')}}">
                     @error('name')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
                     @enderror
                 </div>
                 <div class="form-input">
@@ -23,9 +23,9 @@
                     <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
                         placeholder="Email" value="{{old('email')}}">
                     @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
                     @enderror
                 </div>
             </div>
@@ -35,9 +35,9 @@
                     <input type="password" name="password" class="form-control @error('password') is-invalid @enderror"
                         placeholder="Password">
                     @error('password')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
                     @enderror
                 </div>
                 <div class="form-input">
@@ -48,9 +48,9 @@
                         <option value="Female">Female</option>
                     </select>
                     @error('gender')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
                     @enderror
                 </div>
             </div>
@@ -60,9 +60,9 @@
                     <input type="text" name="education" class="form-control @error('education') is-invalid @enderror"
                         placeholder="Highest Degree" value="{{old('education')}}">
                     @error('education')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
                     @enderror
                 </div>
                 <div class="form-input">
@@ -70,9 +70,9 @@
                     <input type="text" name="address" class="form-control @error('address') is-invalid @enderror"
                         placeholder="Address" value="{{old('address')}}">
                     @error('address')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
                     @enderror
                 </div>
             </div>
@@ -82,13 +82,13 @@
                     <select name="specialty" class="form-control">
                         <option value="">Please select</option>
                         @foreach(App\Models\Specialty::all() as $d)
-                            <option value="{{$d->name}}">{{$d->name}}</option>
+                        <option value="{{$d->name}}">{{$d->name}}</option>
                         @endforeach
                     </select>
                     @error('specialty')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
                     @enderror
                 </div>
                 <div class="form-input">
@@ -97,9 +97,9 @@
                         class="form-control @error('phone_number') is-invalid @enderror"
                         value="{{old('phone_number')}}">
                     @error('phone_number')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
                     @enderror
                 </div>
             </div>
@@ -109,20 +109,20 @@
                     <input type="date" name="dob" class="form-control @error('dob') is-invalid @enderror"
                         value="{{old('dob')}}" max="{{ date('Y-m-d') }}">
                     @error('dob')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
                     @enderror
                 </div>
                 <div class="form-input">
-                    <label>Image</label>
+                    <label>Profile Picture</label>
                     <input type="file" class="form-control file-upload-info @error('image') is-invalid @enderror"
                         placeholder="Upload Image" name="image">
                     <span class="input-group-append"></span>
                     @error('image')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
                     @enderror
                 </div>
             </div>
@@ -131,9 +131,9 @@
                 <textarea class="form-control @error('description') is-invalid @enderror" id="exampleTextarea1" rows="4"
                     name="description">{{old('description')}}</textarea>
                 @error('description')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
                 @enderror
             </div>
             <button type="submit">Submit</button>
