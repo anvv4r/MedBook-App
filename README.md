@@ -65,6 +65,6 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-# MedBook-App
+# MedBook App
 
 MedBook is a platform that connects patients with healthcare practitioners. We aim to make healthcare more accessible for everyone, by giving clinics access to online bookings, appointment reminders, mobile check-in, online new patient and practitioner registration, and online prescription renewals. Our mission is to improve the health care experience for everyone.
