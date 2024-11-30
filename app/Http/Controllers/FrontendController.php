@@ -60,7 +60,7 @@ class FrontendController extends Controller
         if ($request->ajax()) {
             return view('partials.doctors', compact('practitioners'))->render();
         }
-        return view('index', compact('practitioners'));
+        return view('search', compact('practitioners'));
     }
     /**
      * Display the specified resource.
