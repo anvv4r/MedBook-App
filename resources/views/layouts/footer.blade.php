@@ -24,7 +24,7 @@
         <img src="{{ asset('img/blue-stet.jpg')}}" alt="MedBook" />
     </div>
     <div class="footer_copyright">
-        <h3>&copy; 2024 MedBook. All rights reserved.</h3>
+        <h3>Copyright &copy; <span id="year"></span> MedBook. All rights reserved.</h3>
     </div>
 </footer>
 <script>
@@ -55,8 +55,7 @@
             }
         });
     });
-</script>
-<script>
+
     document.getElementById("load-more").addEventListener("click", function () {
         var page = this.getAttribute("data-page");
         var button = this;
@@ -74,6 +73,8 @@
                 button.setAttribute("data-page", nextPage);
             });
     });
+
+    document.getElementById('year').innerHTML = new Date().getFullYear();
 </script>
 </body>
 
